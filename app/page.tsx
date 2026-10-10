@@ -111,7 +111,22 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-black px-5 py-12 text-white">
+    <main id="home" className="min-h-screen bg-black px-5 py-12 text-white">
+  <details className="fixed right-4 top-4 z-50">
+    <summary aria-label="Open menu"
+      className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
+      style={{ color: GOLD, borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
+      ☰
+    </summary>
+    <nav aria-label="Site navigation"
+      className="mt-2 flex min-w-40 flex-col gap-1 rounded-xl border p-2 shadow-xl"
+      style={{ borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
+      <a href="#home" className="rounded px-4 py-3 hover:bg-white/10">Home</a>
+      <a href="#about-us" className="rounded px-4 py-3 hover:bg-white/10">About Us</a>
+      <a href="#faq" className="rounded px-4 py-3 hover:bg-white/10">FAQ</a>
+    </nav>
+  </details>
+
       <div className="mx-auto max-w-5xl text-center">
 
         <h1
@@ -258,57 +273,34 @@ export default function Home() {
         
 
         
-        <section className="mt-12 rounded-2xl border p-6 md:p-10"
-          style={{ borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
-          <div className="text-center">
-            <h2 className="text-3xl font-black tracking-wide"
-              style={{ color: GOLD }}>OUR STORY</h2>
-            <p className="mt-3 text-sm font-bold tracking-widest"
-              style={{ color: GOLD }}>
-              ONE VISION. TWO MINDS. ONE BRAND.
-            </p>
-          </div>
+        
+<section id="about-us" className="mt-12 rounded-2xl border p-6 md:p-10"
+  style={{ borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
+  <div className="text-center">
+    <h2 className="text-3xl font-black" style={{ color: GOLD }}>OUR STORY</h2>
+    <p className="mt-3 text-sm font-bold tracking-widest" style={{ color: GOLD }}>
+      A VISION TURNED INTO SOMETHING REAL.
+    </p>
+  </div>
+  <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center leading-7 text-white">
+    <p>
+      815 FLAVORZ started with an idea and the ambition to build something different.
+      What began as a vision is growing into a brand with its own identity, its own
+      style, and its own direction.
+    </p>
+    <p>
+      Built on creativity, driven by determination, and focused on what’s ahead,
+      we’re creating something we can call our own. Every step is part of the journey,
+      every detail matters, and this is only the beginning.
+    </p>
+  </div>
+  <p className="mt-8 text-center font-bold tracking-widest" style={{ color: GOLD }}>
+    WE’RE JUST GETTING STARTED.
+  </p>
+</section>
 
-          <p className="mx-auto mt-6 max-w-3xl text-center leading-7 text-white">
-            Every brand starts somewhere. 815 FLAVORZ began with an idea and
-            a vision to build something of our own. What started as a concept
-            is becoming a brand shaped by ambition, creativity, and dedication.
-            We are building from the ground up, creating our own identity, and
-            laying the foundation for something bigger. We are not here to
-            follow a lane — we are here to build our own.
-          </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
-            <div className="rounded-xl border p-6"
-              style={{ borderColor: GOLD, backgroundColor: "#151515" }}>
-              <h3 className="text-xl font-bold" style={{ color: GOLD }}>
-                Founder
-              </h3>
-              <p className="mt-3 leading-6 text-white">
-                The vision behind 815 FLAVORZ. The original idea that sparked
-                the beginning of something bigger.
-              </p>
-            </div>
-
-            <div className="rounded-xl border p-6"
-              style={{ borderColor: GOLD, backgroundColor: "#151515" }}>
-              <h3 className="text-xl font-bold" style={{ color: GOLD }}>
-                CEO &amp; Brand Developer
-              </h3>
-              <p className="mt-3 leading-6 text-white">
-                Turning the vision into reality through hands-on work, brand
-                development, and a commitment to bringing the idea to life.
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-8 text-center font-bold tracking-widest"
-            style={{ color: GOLD }}>
-            THIS IS ONLY THE BEGINNING.
-          </p>
-        </section>
-
-<section className="mx-auto mt-16 max-w-2xl">
+<section id="faq" className="mx-auto mt-16 max-w-2xl">
           <h2
             className="text-3xl font-black"
             style={{ color: GOLD }}
