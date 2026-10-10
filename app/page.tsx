@@ -42,6 +42,11 @@ const faqs = [
     answer:
       "No. 815 Flavorz is currently a brand showcase, not an online store. Purchases and payments cannot be made through this website. Our site is designed to introduce our brand, showcase our collections, and share information as we continue to grow.",
   },
+  {
+    question: "Will the website be updated?",
+    answer:
+      "Yes! As 815 FLAVORZ continues to grow, we plan to update the website with new brand information and announcements. Check back to see what's new as our journey continues.",
+  },
 ];
 
 export default function Home() {
