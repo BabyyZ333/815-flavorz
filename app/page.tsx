@@ -255,33 +255,7 @@ export default function Home() {
           </section>
         )}
 
-        <section className="mt-16">
-          <h2
-            className="text-3xl font-black"
-            style={{ color: GOLD }}
-          >
-            NEW DROPS
-          </h2>
-
-          <p className="mt-3 text-gray-300">
-            Stay tuned for collection announcements.
-          </p>
-
-          <div
-            className="mt-6 rounded-xl border p-8"
-            style={{ borderColor: GOLD }}
-          >
-            <p
-              className="text-xl font-black"
-              style={{ color: GOLD }}
-            >
-              COMING SOON
-            </p>
-            <p className="mt-3 text-sm text-gray-300">
-              New announcements will appear here.
-            </p>
-          </div>
-        </section>
+        
 
         
         <section className="mt-12 rounded-2xl border p-6 md:p-10"
