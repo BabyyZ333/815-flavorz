@@ -1,232 +1,265 @@
 "use client";
 
 import { useState } from "react";
-import { Bungee } from "next/font/google";
 
-const bungee = Bungee({
-  weight: "400",
-  subsets: ["latin"],
-});
+const categories = [
+  { name: "Pre-Rolls", left: "1.5%", top: "0%" },
+  { name: "Flower", left: "34%", top: "0%" },
+  { name: "Disposables & Cartridges", left: "66.5%", top: "0%" },
+  { name: "Edibles", left: "1.5%", top: "51%" },
+  { name: "Moonrocks", left: "34%", top: "51%" },
+  { name: "Snowcaps", left: "66.5%", top: "51%" },
+];
+
+const flowerPrices = {
+  Originals: [
+    ["3.5g", "$20"],
+    ["7g", "$40"],
+    ["14g", "$60"],
+    ["28g ZIP", "$100"],
+  ],
+  Exotics: [
+    ["3.5g", "$30"],
+    ["7g", "$50"],
+    ["14g", "$80"],
+    ["28g ZIP", "$130"],
+  ],
+};
 
 export default function Home() {
-  const [password, setPassword] = useState("");
-  const [unlocked, setUnlocked] = useState(false);
-  const [error, setError] = useState("");
+  const [selected, setSelected] = useState("");
+  const [flowerType, setFlowerType] =
+    useState<"Originals" | "Exotics" | "">("");
 
-  function enterSite() {
-    if (password === "815flavorz") {
-      setUnlocked(true);
-      setError("");
-    } else {
-      setError("Wrong password");
-    }
-  }
-
-  if (!unlocked) {
-    return (
-      <main className="flex min-h-screen items-center justify-center bg-black px-6 text-white">
-        <div className="w-full max-w-sm rounded-3xl border border-blue-500/30 bg-blue-950/20 p-8 text-center shadow-[0_0_60px_rgba(59,130,246,0.18)]">
-
-          <p className="mb-3 text-xs font-bold uppercase tracking-[0.45em] text-blue-400">
-            Private Access
-          </p>
-
-          <h1 className={`${bungee.className} text-5xl tracking-tight`}>
-            815 <span className="text-blue-500">FLAVORZ</span>
-          </h1>
-
-          <p className="mt-3 text-xs uppercase tracking-[0.25em] text-gray-400">
-            Exclusive • Exotic • Premium
-          </p>
-
-          <input
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && enterSite()}
-            className="mt-8 w-full rounded-2xl border border-blue-500/40 bg-black/70 px-4 py-3 text-white outline-none focus:border-blue-400"
-          />
-
-          <button
-            onClick={enterSite}
-            className={`${bungee.className} mt-4 w-full rounded-2xl bg-blue-600 px-4 py-3 text-white shadow-[0_0_25px_rgba(37,99,235,0.5)] transition hover:bg-blue-500`}
-          >
-            ENTER
-          </button>
-
-          {error && (
-            <p className="mt-4 text-blue-300">
-              {error}
-            </p>
-          )}
-        </div>
-      </main>
-    );
+  function close() {
+    setSelected("");
+    setFlowerType("");
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-blue-950 to-black text-white">
+    <main style={{ minHeight: "100vh", background: "#050005" }}>
+      <div
+        style={{
+          position: "relative",
+          maxWidth: 1536,
+          margin: "auto",
+        }}
+      >
+        <img
+          src="/815flavorz-homepage.png"
+          alt="815 Flavorz tropical sunset homepage"
+          style={{
+            display: "block",
+            width: "100%",
+            height: "auto",
+          }}
+        />
 
-      {/* NAVIGATION */}
-      <nav className="sticky top-0 z-50 flex flex-wrap items-center justify-between gap-4 border-b border-blue-500/30 bg-black/85 px-6 py-5 backdrop-blur-xl">
+        <button
+          aria-label="Explore collections"
+          onClick={() =>
+            document.getElementById("categories")?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            })
+          }
+          style={{
+            position: "absolute",
+            left: "29%",
+            top: "46%",
+            width: "20%",
+            height: "7%",
+            opacity: 0,
+            cursor: "pointer",
+          }}
+        />
 
-        <h1 className={`${bungee.className} text-2xl tracking-tight`}>
-          815 <span className="text-blue-500">FLAVORZ</span>
-        </h1>
-
-        <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-wider sm:text-sm">
-          <a className="transition hover:text-blue-400" href="#">
-            Home
-          </a>
-
-          <a className="transition hover:text-blue-400" href="#flower">
-            Flower
-          </a>
-
-          <a className="transition hover:text-blue-400" href="#prerolls">
-            Pre-Rolls
-          </a>
-
-          <a className="transition hover:text-blue-400" href="#edibles">
-            Edibles
-          </a>
-
-          <a className="transition hover:text-blue-400" href="#disposables">
-            Disposables
-          </a>
+        <div
+          id="categories"
+          style={{
+            position: "absolute",
+            top: "55%",
+            left: 0,
+            width: "100%",
+            height: "38%",
+          }}
+        >
+          {categories.map((category) => (
+            <button
+              key={category.name}
+              aria-label={`Explore ${category.name}`}
+              onClick={() => {
+                setSelected(category.name);
+                setFlowerType("");
+              }}
+              style={{
+                position: "absolute",
+                left: category.left,
+                top: category.top,
+                width: "32%",
+                height: "47%",
+                opacity: 0,
+                cursor: "pointer",
+              }}
+            />
+          ))}
         </div>
-      </nav>
+      </div>
 
-      {/* MAIN HERO */}
-      <section className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-6 text-center">
-
-        <div className="absolute h-72 w-72 rounded-full bg-blue-600/20 blur-3xl" />
-
-        <div className="relative z-10">
-
-          <p className="mb-4 text-sm font-bold uppercase tracking-[0.45em] text-blue-400">
-            Welcome To
-          </p>
-
-          <h2 className={`${bungee.className} text-6xl tracking-tighter sm:text-8xl`}>
-            815
-            <span className="block text-blue-500 drop-shadow-[0_0_25px_rgba(59,130,246,0.8)]">
-              FLAVORZ
-            </span>
-          </h2>
-
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.3em] text-gray-300">
-            Exclusive • Exotic • Premium
-          </p>
-
-          <a
-            href="#flower"
-            className={`${bungee.className} mt-10 inline-block rounded-full border border-blue-400 bg-blue-600 px-8 py-3 shadow-[0_0_30px_rgba(37,99,235,0.5)] transition hover:scale-105 hover:bg-blue-500`}
+      {selected && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={selected}
+          onClick={close}
+          style={{
+            position: "fixed",
+            inset: 0,
+            background: "rgba(0,0,0,0.88)",
+            display: "grid",
+            placeItems: "center",
+            padding: 16,
+            zIndex: 100,
+            overflowY: "auto",
+          }}
+        >
+          <section
+            onClick={(event) => event.stopPropagation()}
+            style={{
+              width: "min(480px, 100%)",
+              border: "2px solid #ff4ba7",
+              borderRadius: 22,
+              background: "#16051b",
+              boxShadow: "0 0 35px #ff149366",
+              padding: 28,
+              textAlign: "center",
+              color: "white",
+            }}
           >
-            EXPLORE
-          </a>
+            <button
+              onClick={close}
+              aria-label="Close"
+              style={{
+                float: "right",
+                color: "#ff7fc1",
+                fontSize: 26,
+                cursor: "pointer",
+              }}
+            >
+              ×
+            </button>
 
+            <h2
+              style={{
+                fontSize: 30,
+                fontWeight: 900,
+                color: "#ff69b4",
+                marginBottom: 24,
+                textShadow: "0 0 12px #ff1493",
+              }}
+            >
+              {selected}
+            </h2>
+
+            {selected === "Flower" ? (
+              <>
+                {!flowerType ? (
+                  <div style={{ display: "grid", gap: 14 }}>
+                    {(["Originals", "Exotics"] as const).map(
+                      (type) => (
+                        <button
+                          key={type}
+                          onClick={() => setFlowerType(type)}
+                          style={{
+                            padding: 20,
+                            border: "1px solid #ff69b4",
+                            borderRadius: 14,
+                            background: "#320c29",
+                            color: "#ff9bd0",
+                            fontSize: 22,
+                            fontWeight: 800,
+                            cursor: "pointer",
+                          }}
+                        >
+                          {type} →
+                        </button>
+                      )
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <h3
+                      style={{
+                        fontSize: 24,
+                        color: "#ff9bd0",
+                        marginBottom: 18,
+                      }}
+                    >
+                      {flowerType}
+                    </h3>
+
+                    {flowerPrices[flowerType].map(([size, price]) => (
+                      <div
+                        key={size}
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          padding: "14px 8px",
+                          borderBottom: "1px solid #ff69b455",
+                          fontSize: 19,
+                        }}
+                      >
+                        <span>{size}</span>
+                        <strong style={{ color: "#ff9bd0" }}>
+                          {price}
+                        </strong>
+                      </div>
+                    ))}
+
+                    <button
+                      onClick={() => setFlowerType("")}
+                      style={{
+                        marginTop: 22,
+                        color: "#ff9bd0",
+                        cursor: "pointer",
+                      }}
+                    >
+                      ← Back to Flower
+                    </button>
+                  </>
+                )}
+              </>
+            ) : (
+              <p
+                style={{
+                  fontSize: 23,
+                  color: "#ffb1da",
+                  padding: "30px 0",
+                }}
+              >
+                COMING SOON
+              </p>
+            )}
+
+            <button
+              onClick={close}
+              style={{
+                display: "block",
+                width: "100%",
+                marginTop: 28,
+                padding: 14,
+                borderRadius: 12,
+                background: "#ff4ba7",
+                color: "#16051b",
+                fontWeight: 800,
+                cursor: "pointer",
+              }}
+            >
+              BACK TO HOME
+            </button>
+          </section>
         </div>
-      </section>
-
-      {/* FLOWER */}
-      <section
-        id="flower"
-        className="border-t border-blue-500/20 px-6 py-24 text-center"
-      >
-        <div className="mx-auto max-w-3xl rounded-3xl border border-blue-500/20 bg-blue-950/20 p-10 shadow-[0_0_40px_rgba(59,130,246,0.08)]">
-
-          <p className="text-xs font-bold uppercase tracking-[0.4em] text-blue-400">
-            Collection
-          </p>
-
-          <h2 className={`${bungee.className} mt-3 text-4xl`}>
-            FLOWER
-          </h2>
-
-          <p className={`${bungee.className} mt-6 text-2xl tracking-[0.15em] text-blue-400`}>
-            COMING SOON
-          </p>
-
-        </div>
-      </section>
-
-      {/* PRE-ROLLS */}
-      <section
-        id="prerolls"
-        className="border-t border-blue-500/20 px-6 py-24 text-center"
-      >
-        <div className="mx-auto max-w-3xl rounded-3xl border border-blue-500/20 bg-black/30 p-10 shadow-[0_0_40px_rgba(59,130,246,0.08)]">
-
-          <p className="text-xs font-bold uppercase tracking-[0.4em] text-blue-400">
-            Collection
-          </p>
-
-          <h2 className={`${bungee.className} mt-3 text-4xl`}>
-            PRE-ROLLS
-          </h2>
-
-          <p className={`${bungee.className} mt-6 text-2xl tracking-[0.15em] text-blue-400`}>
-            COMING SOON
-          </p>
-
-        </div>
-      </section>
-
-      {/* EDIBLES */}
-      <section
-        id="edibles"
-        className="border-t border-blue-500/20 px-6 py-24 text-center"
-      >
-        <div className="mx-auto max-w-3xl rounded-3xl border border-blue-500/20 bg-blue-950/20 p-10 shadow-[0_0_40px_rgba(59,130,246,0.08)]">
-
-          <p className="text-xs font-bold uppercase tracking-[0.4em] text-blue-400">
-            Collection
-          </p>
-
-          <h2 className={`${bungee.className} mt-3 text-4xl`}>
-            EDIBLES
-          </h2>
-
-          <p className={`${bungee.className} mt-6 text-2xl tracking-[0.15em] text-blue-400`}>
-            COMING SOON
-          </p>
-
-        </div>
-      </section>
-
-      {/* DISPOSABLES */}
-      <section
-        id="disposables"
-        className="border-t border-blue-500/20 px-6 py-24 text-center"
-      >
-        <div className="mx-auto max-w-3xl rounded-3xl border border-blue-500/20 bg-black/30 p-10 shadow-[0_0_40px_rgba(59,130,246,0.08)]">
-
-          <p className="text-xs font-bold uppercase tracking-[0.4em] text-blue-400">
-            Collection
-          </p>
-
-          <h2 className={`${bungee.className} mt-3 text-4xl`}>
-            DISPOSABLES
-          </h2>
-
-          <p className={`${bungee.className} mt-6 text-2xl tracking-[0.15em] text-blue-400`}>
-            COMING SOON
-          </p>
-
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="border-t border-blue-500/20 px-6 py-10 text-center">
-
-        <p className={`${bungee.className} text-sm tracking-widest text-gray-400`}>
-          815 <span className="text-blue-500">FLAVORZ</span>
-        </p>
-
-      </footer>
-
+      )}
     </main>
   );
 }
