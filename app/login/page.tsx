@@ -41,9 +41,9 @@ export default function LoginPage() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(160deg, #31002d, #fa168b, #ff9a47)",
+        background: "linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('/password-bg.png') center center / cover no-repeat",
         padding: "20px",
-        color: "white",
+        color: "#080808",
         fontFamily: "Arial, sans-serif",
       }}
     >
@@ -93,7 +93,7 @@ export default function LoginPage() {
             padding: 14,
             border: "none",
             borderRadius: 10,
-            background: "#ff2b9d",
+            background: "#D4AF37",
             color: "white",
             fontSize: 18,
             fontWeight: "bold",
