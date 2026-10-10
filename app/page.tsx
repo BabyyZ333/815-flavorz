@@ -122,8 +122,8 @@ export default function Home() {
       className="mt-2 flex min-w-40 flex-col gap-1 rounded-xl border p-2 shadow-xl"
       style={{ borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
       <a href="#home" className="rounded px-4 py-3 hover:bg-white/10">Home</a>
-      <a href="#about-us" className="rounded px-4 py-3 hover:bg-white/10">About Us</a>
-      <a href="#faq" className="rounded px-4 py-3 hover:bg-white/10">FAQ</a>
+      <a href="/about" className="rounded px-4 py-3 hover:bg-white/10">About Us</a>
+      <a href="/faq" className="rounded px-4 py-3 hover:bg-white/10">FAQ</a>
     </nav>
   </details>
 
@@ -274,71 +274,10 @@ export default function Home() {
 
         
         
-<section id="about-us" className="mt-12 rounded-2xl border p-6 md:p-10"
-  style={{ borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
-  <div className="text-center">
-    <h2 className="text-3xl font-black" style={{ color: GOLD }}>OUR STORY</h2>
-    <p className="mt-3 text-sm font-bold tracking-widest" style={{ color: GOLD }}>
-      A VISION TURNED INTO SOMETHING REAL.
-    </p>
-  </div>
-  <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center leading-7 text-white">
-    <p>
-      815 FLAVORZ started with an idea and the ambition to build something different.
-      What began as a vision is growing into a brand with its own identity, its own
-      style, and its own direction.
-    </p>
-    <p>
-      Built on creativity, driven by determination, and focused on what’s ahead,
-      we’re creating something we can call our own. Every step is part of the journey,
-      every detail matters, and this is only the beginning.
-    </p>
-  </div>
-  <p className="mt-8 text-center font-bold tracking-widest" style={{ color: GOLD }}>
-    WE’RE JUST GETTING STARTED.
-  </p>
-</section>
 
 
-<section id="faq" className="mx-auto mt-16 max-w-2xl">
-          <h2
-            className="text-3xl font-black"
-            style={{ color: GOLD }}
-          >
-            FREQUENTLY ASKED QUESTIONS
-          </h2>
 
-          <div className="mt-6 space-y-3 text-left">
-            {faqs.map((faq, index) => (
-              <div
-                key={faq.question}
-                className="overflow-hidden rounded-xl border"
-                style={{ borderColor: GOLD }}
-              >
-                <button
-                  onClick={() =>
-                    setOpenFaq(openFaq === index ? null : index)
-                  }
-                  className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left font-bold"
-                  style={{
-                    backgroundColor: "#000000",
-                    color: GOLD,
-                  }}
-                  aria-expanded={openFaq === index}
-                >
-                  <span>{faq.question}</span>
-                  <span>{openFaq === index ? "−" : "+"}</span>
-                </button>
 
-                {openFaq === index && (
-                  <p className="px-4 pt-3 pb-4 text-sm leading-5 text-white">
-                    {faq.answer}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
 
         <footer
           className="mt-16 text-sm tracking-widest"
