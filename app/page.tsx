@@ -353,7 +353,7 @@ export default function Home() {
                   onClick={() =>
                     setOpenFaq(openFaq === index ? null : index)
                   }
-                  className="flex w-full items-center justify-between gap-4 p-5 text-left font-bold"
+                  className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left font-bold"
                   style={{
                     backgroundColor: "#000000",
                     color: GOLD,
@@ -365,7 +365,7 @@ export default function Home() {
                 </button>
 
                 {openFaq === index && (
-                  <p className="px-5 pb-5 text-sm text-white">
+                  <p className="px-4 pt-3 pb-4 text-sm leading-5 text-white">
                     {faq.answer}
                   </p>
                 )}
