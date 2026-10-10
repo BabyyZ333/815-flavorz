@@ -1,14 +1,17 @@
+
 "use client";
 
 import { useState } from "react";
 
+const GOLD = "#D4AF37";
+
 const categories = [
-  { name: "Pre-Rolls", left: "1.5%", top: "0%" },
-  { name: "Flower", left: "34%", top: "0%" },
-  { name: "Disposables & Cartridges", left: "66.5%", top: "0%" },
-  { name: "Edibles", left: "1.5%", top: "51%" },
-  { name: "Moonrocks", left: "34%", top: "51%" },
-  { name: "Snowcaps", left: "66.5%", top: "51%" },
+  "Pre-Rolls",
+  "Flower",
+  "Disposables",
+  "Edibles",
+  "Moonrocks",
+  "Snowcaps",
 ];
 
 const flowerPrices = {
@@ -26,240 +29,318 @@ const flowerPrices = {
   ],
 };
 
-export default function Home() {
-  const [selected, setSelected] = useState("");
-  const [flowerType, setFlowerType] =
-    useState<"Originals" | "Exotics" | "">("");
+type FlowerType = keyof typeof flowerPrices;
 
-  function close() {
-    setSelected("");
-    setFlowerType("");
+const faqs = [
+  {
+    question: "What is 815 Flavorz?",
+    answer:
+      "815 Flavorz is a product showcase featuring collections, product information, and announcements.",
+  },
+  {
+    question: "Do I need to be 21+?",
+    answer:
+      "Yes. This website is intended for adults aged 21 and older.",
+  },
+  {
+    question: "Can I order directly through the website?",
+    answer:
+      "No. 815 Flavorz is an informational showcase. There is no online checkout or ordering.",
+  },
+  {
+    question: "When are new collections announced?",
+    answer:
+      "Check the New Drops section for upcoming collection updates.",
+  },
+  {
+    question: "Why do some products say Coming Soon?",
+    answer:
+      "Those sections are placeholders until additional information is published.",
+  },
+];
+
+export default function Home() {
+  const [ageConfirmed, setAgeConfirmed] = useState(false);
+  const [selected, setSelected] = useState("");
+  const [flowerType, setFlowerType] = useState<FlowerType | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  if (!ageConfirmed) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-black p-6 text-center text-white">
+        <div
+          className="w-full max-w-md rounded-2xl border p-8"
+          style={{ borderColor: GOLD }}
+        >
+          <h1
+            className="text-4xl font-black"
+            style={{ color: GOLD }}
+          >
+            815 FLAVORZ
+          </h1>
+
+          <p className="mt-6 text-xl font-bold text-white">
+            AGE VERIFICATION
+          </p>
+
+          <p className="mt-4 text-gray-300">
+            This website is intended for adults 21 years of age or older.
+          </p>
+
+          <button
+            onClick={() => setAgeConfirmed(true)}
+            className="mt-8 w-full rounded-xl p-4 font-black"
+            style={{
+              backgroundColor: GOLD,
+              color: "#000000",
+            }}
+          >
+            I AM 21 OR OLDER
+          </button>
+
+          <button
+            onClick={() => {
+              window.location.href = "https://www.google.com";
+            }}
+            className="mt-3 w-full rounded-xl border p-4 font-bold"
+            style={{
+              borderColor: GOLD,
+              color: "#FFFFFF",
+              backgroundColor: "#000000",
+            }}
+          >
+            I AM UNDER 21
+          </button>
+
+          <p className="mt-6 text-xs text-gray-400">
+            Age confirmation is not proof of identity.
+          </p>
+        </div>
+      </main>
+    );
   }
 
   return (
-    <main style={{ minHeight: "100vh", background: "#050005" }}>
-      <div
-        style={{
-          position: "relative",
-          maxWidth: 1536,
-          margin: "auto",
-        }}
-      >
-        <img
-          src="/815flavorz-homepage.png"
-          alt="815 Flavorz tropical sunset homepage"
-          style={{
-            display: "block",
-            width: "100%",
-            height: "auto",
-          }}
-        />
+    <main className="min-h-screen bg-black px-5 py-12 text-white">
+      <div className="mx-auto max-w-5xl text-center">
 
-        <button
-          aria-label="Explore collections"
-          onClick={() =>
-            document.getElementById("categories")?.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            })
-          }
-          style={{
-            position: "absolute",
-            left: "29%",
-            top: "46%",
-            width: "20%",
-            height: "7%",
-            opacity: 0,
-            cursor: "pointer",
-          }}
-        />
+        <h1
+          className="text-5xl font-black tracking-widest"
+          style={{ color: GOLD }}
+        >
+          815 FLAVORZ
+        </h1>
+
+        <p className="mt-4 text-sm tracking-widest text-gray-300">
+          EXCLUSIVE COLLECTIONS
+        </p>
 
         <div
-          id="categories"
-          style={{
-            position: "absolute",
-            top: "55%",
-            left: 0,
-            width: "100%",
-            height: "38%",
-          }}
-        >
+          className="my-10 h-px"
+          style={{ backgroundColor: GOLD }}
+        />
+
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {categories.map((category) => (
             <button
-              key={category.name}
-              aria-label={`Explore ${category.name}`}
+              key={category}
               onClick={() => {
-                setSelected(category.name);
-                setFlowerType("");
+                setSelected(category);
+                setFlowerType(null);
               }}
+              className="rounded-xl p-6 transition hover:brightness-110"
               style={{
-                position: "absolute",
-                left: category.left,
-                top: category.top,
-                width: "32%",
-                height: "47%",
-                opacity: 0,
-                cursor: "pointer",
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      {selected && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={selected}
-          onClick={close}
-          style={{
-            position: "fixed",
-            inset: 0,
-            background: "rgba(0,0,0,0.88)",
-            display: "grid",
-            placeItems: "center",
-            padding: 16,
-            zIndex: 100,
-            overflowY: "auto",
-          }}
-        >
-          <section
-            onClick={(event) => event.stopPropagation()}
-            style={{
-              width: "min(480px, 100%)",
-              border: "2px solid #ff4ba7",
-              borderRadius: 22,
-              background: "#16051b",
-              boxShadow: "0 0 35px #ff149366",
-              padding: 28,
-              textAlign: "center",
-              color: "white",
-            }}
-          >
-            <button
-              onClick={close}
-              aria-label="Close"
-              style={{
-                float: "right",
-                color: "#ff7fc1",
-                fontSize: 26,
-                cursor: "pointer",
+                backgroundColor: GOLD,
+                color: "#000000",
               }}
             >
-              ×
-            </button>
+              <h2
+                className="text-lg font-black"
+                style={{ color: "#000000" }}
+              >
+                {category}
+              </h2>
 
+              <p className="mt-3 text-xs font-bold tracking-widest">
+                COMING SOON
+              </p>
+            </button>
+          ))}
+        </div>
+
+        {selected && (
+          <section
+            className="mt-10 rounded-xl border p-8"
+            style={{ borderColor: GOLD }}
+          >
             <h2
-              style={{
-                fontSize: 30,
-                fontWeight: 900,
-                color: "#ff69b4",
-                marginBottom: 24,
-                textShadow: "0 0 12px #ff1493",
-              }}
+              className="text-2xl font-black"
+              style={{ color: GOLD }}
             >
               {selected}
             </h2>
 
             {selected === "Flower" ? (
-              <>
-                {!flowerType ? (
-                  <div style={{ display: "grid", gap: 14 }}>
-                    {(["Originals", "Exotics"] as const).map(
-                      (type) => (
-                        <button
-                          key={type}
-                          onClick={() => setFlowerType(type)}
-                          style={{
-                            padding: 20,
-                            border: "1px solid #ff69b4",
-                            borderRadius: 14,
-                            background: "#320c29",
-                            color: "#ff9bd0",
-                            fontSize: 22,
-                            fontWeight: 800,
-                            cursor: "pointer",
-                          }}
+              <div className="mt-6">
+                <div className="grid grid-cols-2 gap-4">
+                  {(["Originals", "Exotics"] as FlowerType[]).map(
+                    (name) => (
+                      <button
+                        key={name}
+                        onClick={() => setFlowerType(name)}
+                        className="rounded-xl p-5"
+                        style={{
+                          backgroundColor: GOLD,
+                          color: "#000000",
+                        }}
+                      >
+                        <h3
+                          className="text-xl font-black"
+                          style={{ color: "#000000" }}
                         >
-                          {type} →
-                        </button>
-                      )
-                    )}
-                  </div>
-                ) : (
-                  <>
+                          {name}
+                        </h3>
+                        <p className="mt-2 text-xs font-bold">
+                          VIEW PRICES
+                        </p>
+                      </button>
+                    )
+                  )}
+                </div>
+
+                {flowerType && (
+                  <div
+                    className="mt-6 rounded-xl border p-5"
+                    style={{ borderColor: GOLD }}
+                  >
                     <h3
-                      style={{
-                        fontSize: 24,
-                        color: "#ff9bd0",
-                        marginBottom: 18,
-                      }}
+                      className="text-2xl font-black"
+                      style={{ color: GOLD }}
                     >
                       {flowerType}
                     </h3>
 
-                    {flowerPrices[flowerType].map(([size, price]) => (
-                      <div
-                        key={size}
-                        style={{
-                          display: "flex",
-                          justifyContent: "space-between",
-                          padding: "14px 8px",
-                          borderBottom: "1px solid #ff69b455",
-                          fontSize: 19,
-                        }}
-                      >
-                        <span>{size}</span>
-                        <strong style={{ color: "#ff9bd0" }}>
-                          {price}
-                        </strong>
-                      </div>
-                    ))}
-
-                    <button
-                      onClick={() => setFlowerType("")}
-                      style={{
-                        marginTop: 22,
-                        color: "#ff9bd0",
-                        cursor: "pointer",
-                      }}
-                    >
-                      ← Back to Flower
-                    </button>
-                  </>
+                    <div className="mt-5 space-y-3">
+                      {flowerPrices[flowerType].map(
+                        ([amount, price]) => (
+                          <div
+                            key={amount}
+                            className="flex justify-between border-b border-gray-700 pb-2"
+                          >
+                            <span className="font-bold text-white">
+                              {amount}
+                            </span>
+                            <span
+                              className="font-black"
+                              style={{ color: GOLD }}
+                            >
+                              {price}
+                            </span>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </div>
                 )}
-              </>
+              </div>
             ) : (
-              <p
-                style={{
-                  fontSize: 23,
-                  color: "#ffb1da",
-                  padding: "30px 0",
-                }}
-              >
+              <p className="mt-4 text-white">
                 COMING SOON
               </p>
             )}
 
             <button
-              onClick={close}
+              onClick={() => {
+                setSelected("");
+                setFlowerType(null);
+              }}
+              className="mt-6 rounded-lg px-5 py-2 font-bold"
               style={{
-                display: "block",
-                width: "100%",
-                marginTop: 28,
-                padding: 14,
-                borderRadius: 12,
-                background: "#ff4ba7",
-                color: "#16051b",
-                fontWeight: 800,
-                cursor: "pointer",
+                backgroundColor: GOLD,
+                color: "#000000",
               }}
             >
-              BACK TO HOME
+              BACK
             </button>
           </section>
-        </div>
-      )}
+        )}
+
+        <section className="mt-16">
+          <h2
+            className="text-3xl font-black"
+            style={{ color: GOLD }}
+          >
+            NEW DROPS
+          </h2>
+
+          <p className="mt-3 text-gray-300">
+            Stay tuned for collection announcements.
+          </p>
+
+          <div
+            className="mt-6 rounded-xl border p-8"
+            style={{ borderColor: GOLD }}
+          >
+            <p
+              className="text-xl font-black"
+              style={{ color: GOLD }}
+            >
+              COMING SOON
+            </p>
+            <p className="mt-3 text-sm text-gray-300">
+              New announcements will appear here.
+            </p>
+          </div>
+        </section>
+
+        <section className="mx-auto mt-16 max-w-2xl">
+          <h2
+            className="text-3xl font-black"
+            style={{ color: GOLD }}
+          >
+            FREQUENTLY ASKED QUESTIONS
+          </h2>
+
+          <div className="mt-6 space-y-3 text-left">
+            {faqs.map((faq, index) => (
+              <div
+                key={faq.question}
+                className="overflow-hidden rounded-xl border"
+                style={{ borderColor: GOLD }}
+              >
+                <button
+                  onClick={() =>
+                    setOpenFaq(openFaq === index ? null : index)
+                  }
+                  className="flex w-full items-center justify-between gap-4 p-5 text-left font-bold"
+                  style={{
+                    backgroundColor: "#000000",
+                    color: GOLD,
+                  }}
+                  aria-expanded={openFaq === index}
+                >
+                  <span>{faq.question}</span>
+                  <span>{openFaq === index ? "−" : "+"}</span>
+                </button>
+
+                {openFaq === index && (
+                  <p className="px-5 pb-5 text-sm text-white">
+                    {faq.answer}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <footer
+          className="mt-16 text-sm tracking-widest"
+          style={{ color: GOLD }}
+        >
+          815 FLAVORZ © 2026
+        </footer>
+
+      </div>
     </main>
   );
 }
