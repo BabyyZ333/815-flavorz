@@ -35,27 +35,12 @@ const faqs = [
   {
     question: "What is 815 Flavorz?",
     answer:
-      "815 Flavorz is a product showcase featuring collections, product information, and announcements.",
-  },
-  {
-    question: "Do I need to be 21+?",
-    answer:
-      "Yes. This website is intended for adults aged 21 and older.",
+      "815 Flavorz is an up-and-coming brand built from the ground up with a clear vision, a passion for creativity, and a commitment to developing a distinctive identity. We are focused on originality, thoughtful presentation, and building a strong connection with our community as we continue to grow. This is only the beginning of our journey.",
   },
   {
     question: "Can I order directly through the website?",
     answer:
-      "No. 815 Flavorz is an informational showcase. There is no online checkout or ordering.",
-  },
-  {
-    question: "When are new collections announced?",
-    answer:
-      "Check the New Drops section for upcoming collection updates.",
-  },
-  {
-    question: "Why do some products say Coming Soon?",
-    answer:
-      "Those sections are placeholders until additional information is published.",
+      "No. 815 Flavorz is currently a brand showcase, not an online store. Purchases and payments cannot be made through this website. Our site is designed to introduce our brand, showcase our collections, and share information as we continue to grow.",
   },
 ];
 
