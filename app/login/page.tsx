@@ -43,7 +43,7 @@ export default function LoginPage() {
         justifyContent: "center",
         background: "linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url('/password-bg.png') center center / cover no-repeat",
         padding: "20px",
-        color: "#080808",
+        color: "white",
         fontFamily: "Arial, sans-serif",
       }}
     >
@@ -54,8 +54,8 @@ export default function LoginPage() {
           maxWidth: "380px",
           padding: "35px 25px",
           textAlign: "center",
-          background: "rgba(30, 0, 35, 0.8)",
-          border: "2px solid #ff75c5",
+          background: "rgba(0, 0, 0, 0.72)",
+          border: "2px solid #D4AF37",
           borderRadius: "20px",
         }}
       >
