@@ -1,4 +1,5 @@
 "use client";
+import ShootingStar from "./ShootingStar";
 
 import { useState } from "react";
 import GoldParticles from "./GoldParticles";
@@ -10,6 +11,7 @@ export default function Home() {
 
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-6 text-center text-white">
+      <ShootingStar />
       <GoldParticles />
 
       <div className="absolute right-5 top-5 z-30">

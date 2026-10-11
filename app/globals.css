@@ -71,3 +71,43 @@ button h2 {
     animation: none !important;
   }
 }
+
+/* Gold shooting star */
+.shooting-star {
+  position: absolute;
+  top: 12%;
+  left: -180px;
+  width: 160px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #D4AF37,
+    #FFD700,
+    #FFFFFF
+  );
+  box-shadow: 0 0 12px #FFD700, 0 0 25px #D4AF37;
+  animation: shootAcross 1.8s ease-out forwards;
+}
+
+.shooting-star::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700;
+}
+
+@keyframes shootAcross {
+  from { transform: translate(0, 0) rotate(-15deg); }
+  to { transform: translate(150vw, 30vh) rotate(-15deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shooting-star { animation: none; display: none; }
+}

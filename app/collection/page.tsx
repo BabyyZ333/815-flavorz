@@ -1,4 +1,5 @@
 "use client";
+import ShootingStar from "../ShootingStar";
 import GoldParticles from "../GoldParticles";
 
 import { useState } from "react";
@@ -58,6 +59,7 @@ export default function Home() {
   if (!ageConfirmed) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-black p-6 text-center text-white">
+      <ShootingStar />
         <div
           className="w-full max-w-md rounded-2xl border p-8"
           style={{ borderColor: GOLD }}
