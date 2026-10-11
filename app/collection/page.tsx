@@ -260,9 +260,36 @@ export default function Home() {
                 )}
               </div>
             ) : (
-              <p className="mt-4 text-white">
-                COMING SOON
-              </p>
+              (["Snowcaps", "Moonrocks"].includes(selected) ? (
+  <div className="mx-auto mt-6 max-w-md space-y-3">
+    {(selected === "Snowcaps"
+      ? [
+          ["3.5g", "$30"],
+          ["7g", "$60"],
+          ["14g", "$80"],
+          ["Zip (28g)", "$130"],
+        ]
+      : [
+          ["3.5g", "$40"],
+          ["7g", "$65"],
+          ["14g", "$85"],
+          ["Zip (28g)", "$140"],
+        ]
+    ).map(([amount, price]) => (
+      <div
+        key={amount}
+        className="flex justify-between border-b border-gray-700 pb-2"
+      >
+        <span className="font-bold text-white">{amount}</span>
+        <span className="font-black" style={{ color: GOLD }}>
+          {price}
+        </span>
+      </div>
+    ))}
+  </div>
+) : (
+  <p className="mt-4 text-white">COMING SOON</p>
+))
             )}
 
             <button
