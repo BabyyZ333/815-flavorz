@@ -154,7 +154,7 @@ export default function Home() {
                 setSelected(category);
                 setFlowerType(null);
               }}
-              className="rounded-xl border-2 p-6 transition hover:brightness-110"
+              className="gold-shine-box rounded-xl border-2 p-6 transition hover:brightness-110"
               style={{
                 backgroundColor: "#000000",
                 borderColor: GOLD,

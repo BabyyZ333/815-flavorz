@@ -29,3 +29,34 @@ button h2 {
   color: #000000 !important;
   font-weight: 900 !important;
 }
+
+/* Gold shine effect */
+.gold-shine-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-shine-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,215,0,.35) 50%, transparent 70%);
+  transform: translateX(-150%);
+}
+
+.gold-shine-box:hover::after,
+.gold-shine-box:focus-visible::after,
+.gold-shine-box:active::after {
+  animation: goldShine 0.9s ease-out;
+}
+
+@keyframes goldShine {
+  to { transform: translateX(150%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-shine-box::after {
+    animation: none !important;
+  }
+}
