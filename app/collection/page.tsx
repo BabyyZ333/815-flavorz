@@ -1,19 +1,18 @@
-
 "use client";
-
-import { useEffect, useState } from "react";
 import ShootingStar from "../ShootingStar";
 import GoldParticles from "../GoldParticles";
+
+import { useEffect, useState } from "react";
 
 const GOLD = "#D4AF37";
 
 const categories = [
-  { name: "Pre-Rolls", number: "01", description: "Discover the collection" },
-  { name: "Flower", number: "02", description: "Originals & Exotics" },
-  { name: "Disposables", number: "03", description: "Explore what's ahead" },
-  { name: "Edibles", number: "04", description: "Discover the collection" },
-  { name: "Moonrocks", number: "05", description: "Collection details" },
-  { name: "Snowcaps", number: "06", description: "Collection details" },
+  "Pre-Rolls",
+  "Flower",
+  "Disposables",
+  "Edibles",
+  "Moonrocks",
+  "Snowcaps",
 ];
 
 const flowerPrices = {
@@ -31,77 +30,87 @@ const flowerPrices = {
   ],
 };
 
-const otherPrices: Record<string, string[][]> = {
-  Snowcaps: [
-    ["3.5g", "$30"],
-    ["7g", "$60"],
-    ["14g", "$80"],
-    ["Zip (28g)", "$130"],
-  ],
-  Moonrocks: [
-    ["3.5g", "$40"],
-    ["7g", "$65"],
-    ["14g", "$85"],
-    ["Zip (28g)", "$140"],
-  ],
-};
-
 type FlowerType = keyof typeof flowerPrices;
 
-export default function CollectionPage() {
+const faqs = [
+  {
+    question: "What is 815 Flavorz?",
+    answer:
+      "815 Flavorz is an up-and-coming brand built from the ground up with a clear vision, a passion for creativity, and a commitment to developing a distinctive identity. We are focused on originality, thoughtful presentation, and building a strong connection with our community as we continue to grow. This is only the beginning of our journey.",
+  },
+  {
+    question: "Can I order directly through the website?",
+    answer:
+      "No. 815 Flavorz is currently a brand showcase, not an online store. Purchases and payments cannot be made through this website. Our site is designed to introduce our brand, showcase our collections, and share information as we continue to grow.",
+  },
+  {
+    question: "Will the website be updated?",
+    answer:
+      "Yes! As 815 FLAVORZ continues to grow, we plan to update the website with new brand information and announcements. Check back to see what's new as our journey continues.",
+  },
+];
+
+export default function Home() {
   const [ageConfirmed, setAgeConfirmed] = useState(false);
-  const [ageChecked, setAgeChecked] = useState(false);
+const [ageChecked, setAgeChecked] = useState(false);
+
+useEffect(() => {
+  setAgeConfirmed(sessionStorage.getItem("815-age-verified") === "yes");
+  setAgeChecked(true);
+}, []);
   const [selected, setSelected] = useState("");
   const [flowerType, setFlowerType] = useState<FlowerType | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  useEffect(() => {
-    setAgeConfirmed(
-      sessionStorage.getItem("815-age-verified") === "yes"
-    );
-    setAgeChecked(true);
-  }, []);
+  if (!ageChecked) return null;
 
-  if (!ageChecked) {
-    return <main className="min-h-screen bg-[#050a16]" />;
-  }
-
-  if (!ageConfirmed) {
+if (!ageConfirmed) {
     return (
-      <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#050a16] p-5 text-center text-white">
-        <ShootingStar />
-
-        <div className="age-gate-panel relative z-10 w-full max-w-md rounded-3xl border border-[#d4af37] bg-[#08172d] p-8 shadow-2xl">
-          <h1 className="age-gate-logo text-4xl font-black tracking-wider text-[#f3d477]">
+      <main className="flex min-h-screen items-center justify-center bg-black p-6 text-center text-white">
+      <ShootingStar />
+        <div
+          className="age-gate-panel w-full max-w-md rounded-2xl border p-8"
+          style={{ borderColor: GOLD }}
+        >
+          <h1
+            className="age-gate-logo text-4xl font-black"
+            style={{ color: GOLD }}
+          >
             815 FLAVORZ
           </h1>
 
-          <div className="mx-auto my-7 h-px w-32 bg-[#d4af37]" />
-
-          <h2 className="text-xl font-black tracking-widest text-[#f3d477]">
+          <p className="mt-6 text-xl font-bold text-white">
             AGE VERIFICATION
-          </h2>
+          </p>
 
-          <p className="mt-5 leading-7 text-gray-300">
+          <p className="mt-4 text-gray-300">
             This website is intended for adults 21 years of age or older.
           </p>
 
           <button
-            type="button"
             onClick={() => {
-              sessionStorage.setItem("815-age-verified", "yes");
-              setAgeConfirmed(true);
+  sessionStorage.setItem("815-age-verified", "yes");
+  setAgeConfirmed(true);
+}}
+            className="mt-8 w-full rounded-xl p-4 font-black"
+            style={{
+              backgroundColor: GOLD,
+              color: "#000000",
             }}
-            className="mt-8 w-full rounded-xl bg-[#d4af37] p-4 font-black text-black transition hover:brightness-110"
           >
             I AM 21 OR OLDER
           </button>
 
           <button
-            type="button"
             onClick={() => {
               window.location.href = "https://www.google.com";
             }}
-            className="mt-3 w-full rounded-xl border border-[#d4af37] p-4 font-bold text-white transition hover:bg-white/10"
+            className="mt-3 w-full rounded-xl border p-4 font-bold"
+            style={{
+              borderColor: GOLD,
+              color: "#FFFFFF",
+              backgroundColor: "#000000",
+            }}
           >
             I AM UNDER 21
           </button>
@@ -114,253 +123,218 @@ export default function CollectionPage() {
     );
   }
 
-  const prices =
-    selected === "Flower" && flowerType
-      ? flowerPrices[flowerType]
-      : otherPrices[selected];
-
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-gradient-to-b from-[#050a16] via-[#102a50] to-[#050a16] px-4 pb-32 pt-12 text-white">
+    <main id="home" className="min-h-screen bg-black px-5 py-12 text-white">
       <GoldParticles />
+  <details className="fixed right-4 top-4 z-50">
+    <summary aria-label="Open menu"
+      className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
+      style={{ color: GOLD, borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
+      ☰
+    </summary>
+    <nav aria-label="Site navigation"
+      className="mt-2 flex min-w-40 flex-col gap-1 rounded-xl border p-2 shadow-xl"
+      style={{ borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
+      <a href="/" className="rounded px-4 py-3 hover:bg-white/10">Home</a>
+      <a href="/about" className="rounded px-4 py-3 hover:bg-white/10">About Us</a>
+      <a href="/faq" className="rounded px-4 py-3 hover:bg-white/10">FAQ</a>
+    </nav>
+  </details>
 
-      <details className="fixed right-4 top-4 z-50">
-        <summary
-          aria-label="Open menu"
-          className="cursor-pointer list-none rounded-xl border border-[#d4af37] bg-[#08172d] px-4 py-2 text-2xl font-bold text-[#f3d477] shadow-lg"
+      <div className="mx-auto max-w-5xl text-center">
+
+        <h1
+          className="text-5xl font-black tracking-widest"
+          style={{ color: GOLD, textShadow: "0 0 10px #FFD700, 0 0 25px rgba(255,215,0,0.7)" }}
         >
-          ☰
-        </summary>
+          815 FLAVORZ
+        </h1>
 
-        <nav
-          aria-label="Site navigation"
-          className="mt-2 flex min-w-44 flex-col gap-1 rounded-xl border border-[#d4af37] bg-[#08172d] p-2 shadow-xl"
-        >
-          <a href="/" className="rounded-lg px-4 py-3 hover:bg-white/10">
-            Home
-          </a>
-          <a href="/about" className="rounded-lg px-4 py-3 hover:bg-white/10">
-            About Us
-          </a>
-          <a href="/faq" className="rounded-lg px-4 py-3 hover:bg-white/10">
-            FAQ
-          </a>
-        </nav>
-      </details>
+        <p className="mt-4 text-sm tracking-widest text-gray-300">
+          EXCLUSIVE COLLECTIONS
+        </p>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl">
-        <header className="mb-12 px-2 pt-10 text-center">
-          <p className="mb-4 text-xs font-bold tracking-[0.3em] text-[#d4af37]">
-            THE 815 EXPERIENCE
-          </p>
+        <div
+          className="my-10 h-px"
+          style={{ backgroundColor: GOLD }}
+        />
 
-          <h1
-            className="text-4xl font-black tracking-wider text-[#f3d477] sm:text-6xl"
-            style={{
-              textShadow: "0 0 15px rgba(255,215,0,0.4)",
-            }}
-          >
-            815 FLAVORZ
-          </h1>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setSelected(category);
+                setFlowerType(null);
+              }}
+              className="gold-shine-box rounded-xl border-2 p-6 transition hover:brightness-110"
+              style={{
+                backgroundColor: "#000000",
+                borderColor: GOLD,
+                color: GOLD,
+              }}
+            >
+              <h2
+  className="relative z-10 block text-2xl font-black tracking-wide"
+  style={{
+    color: "#FFD700",
+    WebkitTextFillColor: "#FFD700",
+    opacity: 1,
+    visibility: "visible",
+    
+  }}
+>
+  {category}
+</h2>
 
-          <p className="mt-5 text-sm font-bold tracking-widest text-gray-200">
-            EXCLUSIVE COLLECTIONS
-          </p>
-
-          <div className="mx-auto mt-8 h-px w-40 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent" />
-
-          <p className="mx-auto mt-7 max-w-xl text-sm leading-7 text-gray-300">
-            A vision built from the ground up.
-            Explore our collection categories and follow
-            the journey as 815 FLAVORZ continues to grow.
-          </p>
-        </header>
-
-        <div className="mb-8 flex items-center justify-between gap-3 border-b border-[#d4af37]/30 pb-4">
-          <h2 className="text-lg font-black tracking-wider text-[#f3d477]">
-            EXPLORE CATEGORIES
-          </h2>
-          <span className="text-xs font-bold text-gray-400">
-            06 COLLECTIONS
-          </span>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
-          {categories.map((category) => {
-            const active = selected === category.name;
-
-            return (
-              <button
-                type="button"
-                key={category.name}
-                aria-pressed={active}
-                onClick={() => {
-                  setSelected(category.name);
-                  setFlowerType(null);
-                }}
-                className={`gold-shine-box group relative flex min-h-48 flex-col items-center justify-center overflow-hidden rounded-2xl border p-4 text-center shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:min-h-56 sm:p-7 ${
-                  active
-                    ? "border-[#f3d477] bg-[#17375a]"
-                    : "border-[#d4af37]/50 bg-[#08172d]/90 hover:border-[#f3d477]"
-                }`}
-              >
-                <span className="relative z-10 mb-5 text-xs font-bold tracking-widest text-[#d4af37]">
-                  COLLECTION {category.number}
-                </span>
-
-                <h3 className="relative z-10 break-words text-lg font-black text-[#f3d477] sm:text-2xl">
-                  {category.name}
-                </h3>
-
-                <p className="relative z-10 mt-3 text-xs leading-5 text-gray-300">
-                  {category.description}
-                </p>
-
-                <span className="relative z-10 mt-5 rounded-full border border-[#d4af37]/50 px-3 py-1 text-[10px] font-bold tracking-wider text-[#f3d477]">
-                  COMING SOON
-                </span>
-
-                <span className="relative z-10 mt-4 text-xs font-bold text-[#d4af37]">
-                  VIEW DETAILS ↓
-                </span>
-              </button>
-            );
-          })}
+              <p className="mt-3 text-xs font-bold tracking-widest">
+                COMING SOON
+              </p>
+            </button>
+          ))}
         </div>
 
         {selected && (
           <section
-            id="collection-details"
-            aria-live="polite"
-            className="mt-10 rounded-3xl border border-[#d4af37] bg-[#08172d]/90 px-5 py-10 text-center shadow-2xl sm:px-10"
+            className="mt-10 rounded-xl border p-8"
+            style={{ borderColor: GOLD }}
           >
-            <p className="text-xs font-bold tracking-[0.3em] text-[#d4af37]">
-              COLLECTION DETAILS
-            </p>
-
-            <h2 className="mt-4 text-3xl font-black text-[#f3d477]">
+            <h2
+              className="text-2xl font-black"
+              style={{ color: GOLD }}
+            >
               {selected}
             </h2>
 
-            <div className="mx-auto my-7 h-px w-32 bg-[#d4af37]/60" />
+            {selected === "Flower" ? (
+              <div className="mt-6">
+                <div className="grid grid-cols-2 gap-4">
+                  {(["Originals", "Exotics"] as FlowerType[]).map(
+                    (name) => (
+                      <button
+                        key={name}
+                        onClick={() => setFlowerType(name)}
+                        className="rounded-xl border-2 p-5"
+                        style={{
+                          backgroundColor: "#000000",
+                    borderColor: GOLD,
+                          color: GOLD,
+                        }}
+                      >
+                        <h3
+                          className="text-xl font-black"
+                          style={{ color: GOLD }}
+                        >
+                          {name}
+                        </h3>
+                        <p className="mt-2 text-xs font-bold">
+                          VIEW PRICES
+                        </p>
+                      </button>
+                    )
+                  )}
+                </div>
 
-            {selected === "Flower" && (
-              <div className="mx-auto grid max-w-lg grid-cols-2 gap-4">
-                {(["Originals", "Exotics"] as FlowerType[]).map(
-                  (name) => (
-                    <button
-                      type="button"
-                      key={name}
-                      onClick={() => setFlowerType(name)}
-                      className={`rounded-2xl border p-5 transition hover:brightness-125 ${
-                        flowerType === name
-                          ? "border-[#f3d477] bg-[#17375a]"
-                          : "border-[#d4af37]/50 bg-[#050a16]"
-                      }`}
+                {flowerType && (
+                  <div
+                    className="mt-6 rounded-xl border p-5"
+                    style={{ borderColor: GOLD }}
+                  >
+                    <h3
+                      className="text-2xl font-black"
+                      style={{ color: GOLD }}
                     >
-                      <h3 className="text-lg font-black text-[#f3d477]">
-                        {name}
-                      </h3>
-                      <p className="mt-3 text-xs font-bold tracking-wider text-gray-300">
-                        VIEW DETAILS
-                      </p>
-                    </button>
-                  )
+                      {flowerType}
+                    </h3>
+
+                    <div className="mt-5 space-y-3">
+                      {flowerPrices[flowerType].map(
+                        ([amount, price]) => (
+                          <div
+                            key={amount}
+                            className="flex justify-between border-b border-gray-700 pb-2"
+                          >
+                            <span className="font-bold text-white">
+                              {amount}
+                            </span>
+                            <span
+                              className="font-black"
+                              style={{ color: GOLD }}
+                            >
+                              {price}
+                            </span>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  </div>
                 )}
               </div>
+            ) : (
+              (["Snowcaps", "Moonrocks"].includes(selected) ? (
+  <div className="mx-auto mt-6 max-w-md space-y-3">
+    {(selected === "Snowcaps"
+      ? [
+          ["3.5g", "$30"],
+          ["7g", "$60"],
+          ["14g", "$80"],
+          ["Zip (28g)", "$130"],
+        ]
+      : [
+          ["3.5g", "$40"],
+          ["7g", "$65"],
+          ["14g", "$85"],
+          ["Zip (28g)", "$140"],
+        ]
+    ).map(([amount, price]) => (
+      <div
+        key={amount}
+        className="flex justify-between border-b border-gray-700 pb-2"
+      >
+        <span className="font-bold text-white">{amount}</span>
+        <span className="font-black" style={{ color: GOLD }}>
+          {price}
+        </span>
+      </div>
+    ))}
+  </div>
+) : (
+  <p className="mt-4 text-white">COMING SOON</p>
+))
             )}
-
-            {prices && (
-              <div className="mx-auto mt-7 max-w-lg rounded-2xl border border-[#d4af37]/40 bg-[#050a16]/80 p-5">
-                <h3 className="mb-5 text-lg font-black text-[#f3d477]">
-                  {flowerType && selected === "Flower"
-                    ? flowerType
-                    : selected}
-                </h3>
-
-                <div className="space-y-4">
-                  {prices.map(([amount, price]) => (
-                    <div
-                      key={amount}
-                      className="flex items-center justify-between gap-4 border-b border-white/10 pb-3 text-sm"
-                    >
-                      <span className="font-bold text-white">
-                        {amount}
-                      </span>
-                      <span className="font-black text-[#f3d477]">
-                        {price}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {!prices && (
-              <div className="mt-7 rounded-2xl border border-[#d4af37]/40 bg-[#050a16]/80 px-5 py-9">
-                <p className="text-xl font-black tracking-widest text-[#f3d477]">
-                  COMING SOON
-                </p>
-                <p className="mt-4 text-sm leading-7 text-gray-300">
-                  We're continuing to build our collection.
-                  Stay tuned for future updates.
-                </p>
-              </div>
-            )}
-
-            <p className="mt-7 text-xs leading-6 text-gray-400">
-              Collection information is for display only.
-              Online ordering is not available.
-              Availability is not guaranteed.
-            </p>
 
             <button
-              type="button"
               onClick={() => {
                 setSelected("");
                 setFlowerType(null);
               }}
-              className="mt-8 rounded-xl bg-[#d4af37] px-8 py-3 text-sm font-black tracking-widest text-black transition hover:brightness-110"
+              className="mt-6 rounded-lg px-5 py-2 font-bold"
+              style={{
+                backgroundColor: GOLD,
+                color: "#000000",
+              }}
             >
-              ← BACK TO COLLECTIONS
+              BACK
             </button>
           </section>
         )}
 
-        <div className="mt-16 rounded-3xl border border-[#d4af37]/50 bg-[#08172d]/80 px-6 py-10 text-center">
-          <p className="text-xs font-bold tracking-widest text-[#d4af37]">
-            THE JOURNEY CONTINUES
-          </p>
+        
 
-          <h2 className="mt-4 text-2xl font-black text-[#f3d477]">
-            MORE THAN A COLLECTION.
-          </h2>
+        
+        
 
-          <p className="mx-auto mt-5 max-w-lg text-sm leading-7 text-gray-300">
-            Every great brand starts somewhere.
-            We're creating our own identity, one chapter at a time.
-          </p>
 
-          <a
-            href="/about"
-            className="mt-7 inline-block rounded-xl border border-[#d4af37] px-7 py-3 text-sm font-bold text-[#f3d477] transition hover:bg-[#d4af37]/10"
-          >
-            DISCOVER OUR STORY →
-          </a>
-        </div>
 
-        <footer className="mt-14 text-center">
-          <p className="text-sm font-black tracking-widest text-[#f3d477]">
-            815 FLAVORZ
-          </p>
 
-          <p className="mt-3 text-xs text-gray-400">
-            © 2026 815 FLAVORZ. All rights reserved.
-          </p>
 
-          <p className="mt-3 text-xs text-gray-500">
-            For adults 21+ where permitted by law.
-          </p>
+        <footer
+          className="mt-16 text-sm tracking-widest"
+          style={{ color: GOLD }}
+        >
+          815 FLAVORZ © 2026
         </footer>
+
       </div>
     </main>
   );
