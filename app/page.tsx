@@ -131,7 +131,7 @@ export default function Home() {
 
         <h1
           className="text-5xl font-black tracking-widest"
-          style={{ color: GOLD }}
+          style={{ color: GOLD, textShadow: "0 0 10px #FFD700, 0 0 25px rgba(255,215,0,0.7)" }}
         >
           815 FLAVORZ
         </h1>
