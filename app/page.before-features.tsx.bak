@@ -1,0 +1,146 @@
+"use client";
+
+import { useState } from "react";
+
+const categories = [
+  "Pre-Rolls",
+  "Flower",
+  "Disposables",
+  "Edibles",
+  "Moonrocks",
+  "Snowcaps",
+];
+
+const flowerPrices = {
+  Originals: [
+    ["3.5g", "$20"],
+    ["7g", "$40"],
+    ["14g", "$60"],
+    ["28g ZIP", "$100"],
+  ],
+  Exotics: [
+    ["3.5g", "$30"],
+    ["7g", "$50"],
+    ["14g", "$80"],
+    ["28g ZIP", "$130"],
+  ],
+};
+
+type FlowerType = keyof typeof flowerPrices;
+
+export default function Home() {
+  const [selected, setSelected] = useState("");
+  const [flowerType, setFlowerType] = useState<FlowerType | null>(null);
+
+  return (
+    <main className="min-h-screen bg-black px-5 py-12 text-white">
+      <div className="mx-auto max-w-5xl text-center">
+
+        <h1 className="text-5xl font-black tracking-widest text-[#D4AF37]">
+          815 FLAVORZ
+        </h1>
+
+        <p className="mt-4 text-sm tracking-[0.3em] text-gray-300">
+          EXCLUSIVE COLLECTIONS
+        </p>
+
+        <div className="my-10 h-px bg-[#D4AF37]" />
+
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setSelected(category);
+                setFlowerType(null);
+              }}
+              className="rounded-xl border border-[#D4AF37] bg-[#D4AF37] p-6 transition hover:brightness-110"
+            >
+              <h2
+                className="text-lg font-black"
+                style={{ color: "#000000" }}
+              >
+                {category}
+              </h2>
+              <p className="mt-3 text-xs font-bold tracking-widest text-black">
+                COMING SOON
+              </p>
+            </button>
+          ))}
+        </div>
+
+        {selected && (
+          <div className="mt-10 rounded-xl border border-[#D4AF37] p-8">
+            <h2 className="text-2xl font-black text-[#D4AF37]">
+              {selected}
+            </h2>
+
+            {selected === "Flower" ? (
+              <div className="mt-6">
+                <div className="grid grid-cols-2 gap-4">
+                  {(["Originals", "Exotics"] as FlowerType[]).map((name) => (
+                    <button
+                      key={name}
+                      onClick={() => setFlowerType(name)}
+                      className="rounded-xl bg-[#D4AF37] p-5 hover:brightness-110"
+                    >
+                      <h3
+                        className="text-xl font-black"
+                        style={{ color: "#000000" }}
+                      >
+                        {name}
+                      </h3>
+                      <p className="mt-2 text-xs font-bold text-black">
+                        VIEW PRICES
+                      </p>
+                    </button>
+                  ))}
+                </div>
+
+                {flowerType && (
+                  <div className="mt-6 rounded-xl border border-[#D4AF37] p-5">
+                    <h3 className="text-2xl font-black text-[#D4AF37]">
+                      {flowerType}
+                    </h3>
+
+                    <div className="mt-5 space-y-3">
+                      {flowerPrices[flowerType].map(([amount, price]) => (
+                        <div
+                          key={amount}
+                          className="flex justify-between border-b border-[#D4AF37]/30 pb-2"
+                        >
+                          <span className="font-bold text-white">
+                            {amount}
+                          </span>
+                          <span className="font-black text-[#D4AF37]">
+                            {price}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <p className="mt-4 text-white">COMING SOON</p>
+            )}
+
+            <button
+              onClick={() => {
+                setSelected("");
+                setFlowerType(null);
+              }}
+              className="mt-6 rounded-lg bg-[#D4AF37] px-5 py-2 font-bold text-black"
+            >
+              BACK
+            </button>
+          </div>
+        )}
+
+        <footer className="mt-16 text-sm tracking-widest text-[#D4AF37]">
+          815 FLAVORZ © 2026
+        </footer>
+      </div>
+    </main>
+  );
+}
