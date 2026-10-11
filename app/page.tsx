@@ -193,15 +193,16 @@ export default function Home() {
                       <button
                         key={name}
                         onClick={() => setFlowerType(name)}
-                        className="rounded-xl p-5"
+                        className="rounded-xl border-2 p-5"
                         style={{
-                          backgroundColor: GOLD,
-                          color: "#000000",
+                          backgroundColor: "#000000",
+                    borderColor: GOLD,
+                          color: GOLD,
                         }}
                       >
                         <h3
                           className="text-xl font-black"
-                          style={{ color: "#000000" }}
+                          style={{ color: GOLD }}
                         >
                           {name}
                         </h3>
