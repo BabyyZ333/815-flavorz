@@ -167,7 +167,7 @@ export default function Home() {
     WebkitTextFillColor: "#FFD700",
     opacity: 1,
     visibility: "visible",
-    textShadow: "0 0 8px #FFD700, 0 0 18px rgba(255,215,0,0.7)",
+    
   }}
 >
   {category}
