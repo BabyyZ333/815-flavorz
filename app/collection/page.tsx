@@ -69,11 +69,11 @@ if (!ageConfirmed) {
       <main className="flex min-h-screen items-center justify-center bg-black p-6 text-center text-white">
       <ShootingStar />
         <div
-          className="w-full max-w-md rounded-2xl border p-8"
+          className="age-gate-panel w-full max-w-md rounded-2xl border p-8"
           style={{ borderColor: GOLD }}
         >
           <h1
-            className="text-4xl font-black"
+            className="age-gate-logo text-4xl font-black"
             style={{ color: GOLD }}
           >
             815 FLAVORZ
