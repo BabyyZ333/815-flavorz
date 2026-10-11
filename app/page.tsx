@@ -1,5 +1,5 @@
-
 "use client";
+import GoldParticles from "./GoldParticles";
 
 import { useState } from "react";
 
@@ -112,6 +112,7 @@ export default function Home() {
 
   return (
     <main id="home" className="min-h-screen bg-black px-5 py-12 text-white">
+      <GoldParticles />
   <details className="fixed right-4 top-4 z-50">
     <summary aria-label="Open menu"
       className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
