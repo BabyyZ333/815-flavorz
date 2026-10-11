@@ -55,7 +55,7 @@ export default function Home() {
 const [ageChecked, setAgeChecked] = useState(false);
 
 useEffect(() => {
-  setAgeConfirmed(sessionStorage.getItem("815-age-verified") === "yes");
+  setAgeConfirmed(localStorage.getItem("815-age-verified") === "yes");
   setAgeChecked(true);
 }, []);
   const [selected, setSelected] = useState("");
@@ -89,7 +89,7 @@ if (!ageConfirmed) {
 
           <button
             onClick={() => {
-  sessionStorage.setItem("815-age-verified", "yes");
+  localStorage.setItem("815-age-verified", "yes");
   setAgeConfirmed(true);
 }}
             className="mt-8 w-full rounded-xl p-4 font-black"
