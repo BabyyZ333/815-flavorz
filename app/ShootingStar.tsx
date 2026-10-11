@@ -11,7 +11,7 @@ export default function ShootingStar() {
     const interval = setInterval(() => {
       setShooting(true);
       hideTimer = setTimeout(() => setShooting(false), 1800);
-    }, 30000);
+    }, 6000);
 
     return () => {
       clearInterval(interval);
