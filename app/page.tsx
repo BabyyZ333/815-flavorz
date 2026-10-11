@@ -153,15 +153,16 @@ export default function Home() {
                 setSelected(category);
                 setFlowerType(null);
               }}
-              className="rounded-xl p-6 transition hover:brightness-110"
+              className="rounded-xl border-2 p-6 transition hover:brightness-110"
               style={{
-                backgroundColor: GOLD,
-                color: "#000000",
+                backgroundColor: "#000000",
+                borderColor: GOLD,
+                color: GOLD,
               }}
             >
               <h2
                 className="text-lg font-black"
-                style={{ color: "#000000" }}
+                style={{ color: GOLD }}
               >
                 {category}
               </h2>
