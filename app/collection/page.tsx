@@ -1,7 +1,8 @@
+
 "use client";
+
 import ShootingStar from "../ShootingStar";
 import GoldParticles from "../GoldParticles";
-
 import { useEffect, useState } from "react";
 
 const GOLD = "#D4AF37";
@@ -13,6 +14,12 @@ const categories = [
   "Edibles",
   "Moonrocks",
   "Snowcaps",
+];
+
+const preRollCategories = [
+  "Infused Pre-Rolls",
+  "Pre-Roll Packs",
+  "Single Pre-Rolls",
 ];
 
 const flowerPrices = {
@@ -32,42 +39,27 @@ const flowerPrices = {
 
 type FlowerType = keyof typeof flowerPrices;
 
-const faqs = [
-  {
-    question: "What is 815 Flavorz?",
-    answer:
-      "815 Flavorz is an up-and-coming brand built from the ground up with a clear vision, a passion for creativity, and a commitment to developing a distinctive identity. We are focused on originality, thoughtful presentation, and building a strong connection with our community as we continue to grow. This is only the beginning of our journey.",
-  },
-  {
-    question: "Can I order directly through the website?",
-    answer:
-      "No. 815 Flavorz is currently a brand showcase, not an online store. Purchases and payments cannot be made through this website. Our site is designed to introduce our brand, showcase our collections, and share information as we continue to grow.",
-  },
-  {
-    question: "Will the website be updated?",
-    answer:
-      "Yes! As 815 FLAVORZ continues to grow, we plan to update the website with new brand information and announcements. Check back to see what's new as our journey continues.",
-  },
-];
-
 export default function Home() {
   const [ageConfirmed, setAgeConfirmed] = useState(false);
-const [ageChecked, setAgeChecked] = useState(false);
-
-useEffect(() => {
-  setAgeConfirmed(sessionStorage.getItem("815-age-verified") === "yes");
-  setAgeChecked(true);
-}, []);
+  const [ageChecked, setAgeChecked] = useState(false);
   const [selected, setSelected] = useState("");
   const [flowerType, setFlowerType] = useState<FlowerType | null>(null);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [preRollType, setPreRollType] = useState("");
+
+  useEffect(() => {
+    setAgeConfirmed(
+      sessionStorage.getItem("815-age-verified") === "yes"
+    );
+    setAgeChecked(true);
+  }, []);
 
   if (!ageChecked) return null;
 
-if (!ageConfirmed) {
+  if (!ageConfirmed) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-black p-6 text-center text-white">
-      <ShootingStar />
+        <ShootingStar />
+
         <div
           className="age-gate-panel w-full max-w-md rounded-2xl border p-8"
           style={{ borderColor: GOLD }}
@@ -84,14 +76,15 @@ if (!ageConfirmed) {
           </p>
 
           <p className="mt-4 text-gray-300">
-            This website is intended for adults 21 years of age or older.
+            This website is intended for adults 21 years
+            of age or older.
           </p>
 
           <button
             onClick={() => {
-  sessionStorage.setItem("815-age-verified", "yes");
-  setAgeConfirmed(true);
-}}
+              sessionStorage.setItem("815-age-verified", "yes");
+              setAgeConfirmed(true);
+            }}
             className="mt-8 w-full rounded-xl p-4 font-black"
             style={{
               backgroundColor: GOLD,
@@ -124,28 +117,53 @@ if (!ageConfirmed) {
   }
 
   return (
-    <main id="home" className="min-h-screen bg-black px-5 py-12 text-white">
+    <main
+      id="home"
+      className="min-h-screen bg-black px-5 py-12 text-white"
+    >
       <GoldParticles />
-  <details className="fixed right-4 top-4 z-50">
-    <summary aria-label="Open menu"
-      className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
-      style={{ color: GOLD, borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
-      ☰
-    </summary>
-    <nav aria-label="Site navigation"
-      className="mt-2 flex min-w-40 flex-col gap-1 rounded-xl border p-2 shadow-xl"
-      style={{ borderColor: GOLD, backgroundColor: "#0B0B0B" }}>
-      <a href="/" className="rounded px-4 py-3 hover:bg-white/10">Home</a>
-      <a href="/about" className="rounded px-4 py-3 hover:bg-white/10">About Us</a>
-      <a href="/faq" className="rounded px-4 py-3 hover:bg-white/10">FAQ</a>
-    </nav>
-  </details>
+
+      <details className="fixed right-4 top-4 z-50">
+        <summary
+          aria-label="Open menu"
+          className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
+          style={{
+            color: GOLD,
+            borderColor: GOLD,
+            backgroundColor: "#0B0B0B",
+          }}
+        >
+          ☰
+        </summary>
+
+        <nav
+          aria-label="Site navigation"
+          className="mt-2 flex min-w-40 flex-col gap-1 rounded-xl border p-2 shadow-xl"
+          style={{
+            borderColor: GOLD,
+            backgroundColor: "#0B0B0B",
+          }}
+        >
+          <a href="/" className="rounded px-4 py-3 hover:bg-white/10">
+            Home
+          </a>
+          <a href="/about" className="rounded px-4 py-3 hover:bg-white/10">
+            About Us
+          </a>
+          <a href="/faq" className="rounded px-4 py-3 hover:bg-white/10">
+            FAQ
+          </a>
+        </nav>
+      </details>
 
       <div className="mx-auto max-w-5xl text-center">
-
         <h1
           className="text-5xl font-black tracking-widest"
-          style={{ color: GOLD, textShadow: "0 0 10px #FFD700, 0 0 25px rgba(255,215,0,0.7)" }}
+          style={{
+            color: GOLD,
+            textShadow:
+              "0 0 10px #FFD700, 0 0 25px rgba(255,215,0,0.7)",
+          }}
         >
           815 FLAVORZ
         </h1>
@@ -159,6 +177,7 @@ if (!ageConfirmed) {
           style={{ backgroundColor: GOLD }}
         />
 
+        {/* Main categories */}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {categories.map((category) => (
             <button
@@ -166,6 +185,7 @@ if (!ageConfirmed) {
               onClick={() => {
                 setSelected(category);
                 setFlowerType(null);
+                setPreRollType("");
               }}
               className="gold-shine-box rounded-xl border-2 p-6 transition hover:brightness-110"
               style={{
@@ -175,19 +195,18 @@ if (!ageConfirmed) {
               }}
             >
               <h2
-  className="relative z-10 block text-2xl font-black tracking-wide"
-  style={{
-    color: "#FFD700",
-    WebkitTextFillColor: "#FFD700",
-    opacity: 1,
-    visibility: "visible",
-    
-  }}
->
-  {category}
-</h2>
+                className="relative z-10 block text-2xl font-black tracking-wide"
+                style={{
+                  color: "#FFD700",
+                  WebkitTextFillColor: "#FFD700",
+                  opacity: 1,
+                  visibility: "visible",
+                }}
+              >
+                {category}
+              </h2>
 
-              <p className="mt-3 text-xs font-bold tracking-widest">
+              <p className="relative z-10 mt-3 text-xs font-bold tracking-widest">
                 COMING SOON
               </p>
             </button>
@@ -206,7 +225,91 @@ if (!ageConfirmed) {
               {selected}
             </h2>
 
-            {selected === "Flower" ? (
+            {/* New Pre-Rolls subcategories */}
+            {selected === "Pre-Rolls" && (
+              <div className="mt-6">
+                <p className="mb-6 text-sm text-gray-300">
+                  EXPLORE PRE-ROLL CATEGORIES
+                </p>
+
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  {preRollCategories.map((name) => (
+                    <button
+                      key={name}
+                      onClick={() => setPreRollType(name)}
+                      className="rounded-xl border-2 p-6 transition hover:brightness-125"
+                      style={{
+                        backgroundColor:
+                          preRollType === name
+                            ? "#17130A"
+                            : "#000000",
+                        borderColor: GOLD,
+                        color: GOLD,
+                      }}
+                    >
+                      <h3 className="text-lg font-black">
+                        {name}
+                      </h3>
+
+                      <p className="mt-3 text-xs font-bold tracking-widest text-white">
+                        VIEW CATEGORY
+                      </p>
+                    </button>
+                  ))}
+                </div>
+
+                {preRollType && (
+                  <div
+                    className="mt-7 rounded-xl border p-8"
+                    style={{
+                      borderColor: GOLD,
+                      backgroundColor: "#0B0B0B",
+                    }}
+                  >
+                    <p className="text-xs font-bold tracking-widest text-gray-400">
+                      815 FLAVORZ
+                    </p>
+
+                    <h3
+                      className="mt-4 text-2xl font-black"
+                      style={{ color: GOLD }}
+                    >
+                      {preRollType}
+                    </h3>
+
+                    <div
+                      className="mx-auto my-6 h-px w-24"
+                      style={{ backgroundColor: GOLD }}
+                    />
+
+                    <p
+                      className="text-xl font-black tracking-widest"
+                      style={{ color: GOLD }}
+                    >
+                      COMING SOON
+                    </p>
+
+                    <p className="mt-4 text-sm text-gray-300">
+                      Stay tuned for future collection updates.
+                    </p>
+
+                    <button
+                      onClick={() => setPreRollType("")}
+                      className="mt-7 rounded-lg border px-5 py-3 text-sm font-bold"
+                      style={{
+                        borderColor: GOLD,
+                        color: GOLD,
+                      }}
+                    >
+                      BACK TO PRE-ROLLS
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Flower categories and prices */}
+            {selected === "Flower" && (
               <div className="mt-6">
                 <div className="grid grid-cols-2 gap-4">
                   {(["Originals", "Exotics"] as FlowerType[]).map(
@@ -217,16 +320,14 @@ if (!ageConfirmed) {
                         className="rounded-xl border-2 p-5"
                         style={{
                           backgroundColor: "#000000",
-                    borderColor: GOLD,
+                          borderColor: GOLD,
                           color: GOLD,
                         }}
                       >
-                        <h3
-                          className="text-xl font-black"
-                          style={{ color: GOLD }}
-                        >
+                        <h3 className="text-xl font-black">
                           {name}
                         </h3>
+
                         <p className="mt-2 text-xs font-bold">
                           VIEW PRICES
                         </p>
@@ -270,45 +371,57 @@ if (!ageConfirmed) {
                   </div>
                 )}
               </div>
-            ) : (
-              (["Snowcaps", "Moonrocks"].includes(selected) ? (
-  <div className="mx-auto mt-6 max-w-md space-y-3">
-    {(selected === "Snowcaps"
-      ? [
-          ["3.5g", "$30"],
-          ["7g", "$60"],
-          ["14g", "$80"],
-          ["Zip (28g)", "$130"],
-        ]
-      : [
-          ["3.5g", "$40"],
-          ["7g", "$65"],
-          ["14g", "$85"],
-          ["Zip (28g)", "$140"],
-        ]
-    ).map(([amount, price]) => (
-      <div
-        key={amount}
-        className="flex justify-between border-b border-gray-700 pb-2"
-      >
-        <span className="font-bold text-white">{amount}</span>
-        <span className="font-black" style={{ color: GOLD }}>
-          {price}
-        </span>
-      </div>
-    ))}
-  </div>
-) : (
-  <p className="mt-4 text-white">COMING SOON</p>
-))
+            )}
+
+            {/* Moonrocks and Snowcaps prices */}
+            {["Snowcaps", "Moonrocks"].includes(selected) && (
+              <div className="mx-auto mt-6 max-w-md space-y-3">
+                {(selected === "Snowcaps"
+                  ? [
+                      ["3.5g", "$30"],
+                      ["7g", "$60"],
+                      ["14g", "$80"],
+                      ["Zip (28g)", "$130"],
+                    ]
+                  : [
+                      ["3.5g", "$40"],
+                      ["7g", "$65"],
+                      ["14g", "$85"],
+                      ["Zip (28g)", "$140"],
+                    ]
+                ).map(([amount, price]) => (
+                  <div
+                    key={amount}
+                    className="flex justify-between border-b border-gray-700 pb-2"
+                  >
+                    <span className="font-bold text-white">
+                      {amount}
+                    </span>
+                    <span
+                      className="font-black"
+                      style={{ color: GOLD }}
+                    >
+                      {price}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Other categories */}
+            {["Disposables", "Edibles"].includes(selected) && (
+              <p className="mt-6 text-white">
+                COMING SOON
+              </p>
             )}
 
             <button
               onClick={() => {
                 setSelected("");
                 setFlowerType(null);
+                setPreRollType("");
               }}
-              className="mt-6 rounded-lg px-5 py-2 font-bold"
+              className="mt-8 rounded-lg px-5 py-2 font-bold"
               style={{
                 backgroundColor: GOLD,
                 color: "#000000",
@@ -319,22 +432,12 @@ if (!ageConfirmed) {
           </section>
         )}
 
-        
-
-        
-        
-
-
-
-
-
         <footer
           className="mt-16 text-sm tracking-widest"
           style={{ color: GOLD }}
         >
           815 FLAVORZ © 2026
         </footer>
-
       </div>
     </main>
   );
