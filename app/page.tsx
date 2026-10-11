@@ -161,11 +161,17 @@ export default function Home() {
               }}
             >
               <h2
-                className="text-lg font-black"
-                style={{ color: GOLD }}
-              >
-                {category}
-              </h2>
+  className="relative z-10 block text-2xl font-black tracking-wide"
+  style={{
+    color: "#FFD700",
+    WebkitTextFillColor: "#FFD700",
+    opacity: 1,
+    visibility: "visible",
+    textShadow: "0 0 8px #FFD700, 0 0 18px rgba(255,215,0,0.7)",
+  }}
+>
+  {category}
+</h2>
 
               <p className="mt-3 text-xs font-bold tracking-widest">
                 COMING SOON
