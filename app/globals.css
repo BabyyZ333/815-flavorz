@@ -111,3 +111,23 @@ button h2 {
 @media (prefers-reduced-motion: reduce) {
   .shooting-star { animation: none; display: none; }
 }
+
+/* Make the shooting star more visible */
+.shooting-star {
+  top: 25% !important;
+  left: -160px !important;
+  width: 160px !important;
+  height: 5px !important;
+  background: linear-gradient(90deg, transparent, #FFD700, #FFFFFF) !important;
+  box-shadow: 0 0 20px #FFD700, 0 0 45px #FFD700 !important;
+  animation: visibleShootingStar 2s linear forwards !important;
+}
+
+@keyframes visibleShootingStar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100vw + 350px));
+  }
+}
