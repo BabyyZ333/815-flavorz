@@ -2,7 +2,7 @@
 import ShootingStar from "../ShootingStar";
 import GoldParticles from "../GoldParticles";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const GOLD = "#D4AF37";
 
@@ -52,11 +52,19 @@ const faqs = [
 
 export default function Home() {
   const [ageConfirmed, setAgeConfirmed] = useState(false);
+const [ageChecked, setAgeChecked] = useState(false);
+
+useEffect(() => {
+  setAgeConfirmed(sessionStorage.getItem("815-age-verified") === "yes");
+  setAgeChecked(true);
+}, []);
   const [selected, setSelected] = useState("");
   const [flowerType, setFlowerType] = useState<FlowerType | null>(null);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  if (!ageConfirmed) {
+  if (!ageChecked) return null;
+
+if (!ageConfirmed) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-black p-6 text-center text-white">
       <ShootingStar />
@@ -80,7 +88,10 @@ export default function Home() {
           </p>
 
           <button
-            onClick={() => setAgeConfirmed(true)}
+            onClick={() => {
+  sessionStorage.setItem("815-age-verified", "yes");
+  setAgeConfirmed(true);
+}}
             className="mt-8 w-full rounded-xl p-4 font-black"
             style={{
               backgroundColor: GOLD,
