@@ -22,6 +22,13 @@ const preRollCategories = [
   "Single Pre-Rolls",
 ];
 
+const preRollPrices: Record<string, string> = {
+  "Mini Singles": "$5",
+  "Classic Singles": "$10",
+  "Mini Infused Pre-Rolls": "$6",
+  "Classic Infused Pre-Rolls": "$12",
+};
+
 const preRollOptions: Record<string, string[]> = {
   "Infused Pre-Rolls": [
     "Classic Infused Pre-Rolls",
@@ -328,6 +335,13 @@ export default function CollectionPage() {
                         >
                           {preRollOption}
                         </h4>
+
+<p
+  className="mt-5 text-3xl font-black"
+  style={{ color: GOLD }}
+>
+  {preRollPrices[preRollOption]}
+</p>
 
                         <div
                           className="mx-auto my-6 h-px w-24"
