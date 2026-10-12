@@ -202,3 +202,36 @@ button h2 {
     animation: none !important;
   }
 }
+
+/* 815 FLAVORZ - Fix category text visibility */
+
+.gold-shine-box {
+  position: relative;
+  isolation: isolate;
+  background-color: #000000 !important;
+  overflow: hidden;
+}
+
+.gold-shine-box::before,
+.gold-shine-box::after {
+  pointer-events: none;
+  z-index: 0 !important;
+}
+
+.gold-shine-box h2,
+.gold-shine-box h3,
+.gold-shine-box h4 {
+  position: relative;
+  z-index: 10 !important;
+  color: #FFD700 !important;
+  -webkit-text-fill-color: #FFD700 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.gold-shine-box p {
+  position: relative;
+  z-index: 10 !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
