@@ -1,6 +1,7 @@
-"use client";
-import ShootingStar from "./ShootingStar";
 
+"use client";
+
+import ShootingStar from "./ShootingStar";
 import { useState } from "react";
 import GoldParticles from "./GoldParticles";
 
@@ -10,7 +11,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-6 text-center text-white">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-5 text-center text-white">
       <ShootingStar />
       <GoldParticles />
 
@@ -20,16 +21,25 @@ export default function Home() {
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(!menuOpen)}
-          className="rounded-lg border border-[#D4AF37] bg-black px-4 py-2 text-2xl text-[#D4AF37]"
+          className="rounded-lg border border-[#D4AF37] bg-black px-4 py-2 text-xl font-bold text-[#D4AF37]"
         >
           ☰
         </button>
 
         {menuOpen && (
-          <nav className="absolute right-0 top-14 flex w-44 flex-col rounded-xl border border-[#D4AF37] bg-[#0b0b0b] p-2 text-left shadow-xl">
-            <a href="/" className="rounded-lg px-3 py-3 hover:bg-[#222]">Home</a>
-            <a href="/about" className="rounded-lg px-3 py-3 hover:bg-[#222]">About Us</a>
-            <a href="/faq" className="rounded-lg px-3 py-3 hover:bg-[#222]">FAQ</a>
+          <nav className="absolute right-0 top-14 flex w-44 flex-col rounded-xl border border-[#D4AF37] bg-black p-2 text-left text-sm text-white shadow-xl">
+            <a href="/" className="rounded-lg px-3 py-3 hover:bg-[#222]">
+              Home
+            </a>
+            <a href="/about" className="rounded-lg px-3 py-3 hover:bg-[#222]">
+              About Us
+            </a>
+            <a href="/faq" className="rounded-lg px-3 py-3 hover:bg-[#222]">
+              FAQ
+            </a>
+            <a href="/contact" className="rounded-lg px-3 py-3 hover:bg-[#222]">
+              Contact Us
+            </a>
           </nav>
         )}
       </div>
