@@ -235,3 +235,47 @@ button h2 {
   color: #FFFFFF !important;
   -webkit-text-fill-color: #FFFFFF !important;
 }
+
+/* FIX ALL COLLECTION BUTTONS */
+
+main.bg-black button {
+  position: relative;
+  isolation: isolate;
+}
+
+main.bg-black button:not(.age-gate-panel button) {
+  -webkit-text-fill-color: initial;
+}
+
+/* Keep category text visible above animations */
+main.bg-black button h2,
+main.bg-black button h3,
+main.bg-black button h4 {
+  position: relative;
+  z-index: 20;
+  color: #FFD700 !important;
+  -webkit-text-fill-color: #FFD700 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Keep descriptions visible */
+main.bg-black button p {
+  position: relative;
+  z-index: 20;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Fix the nested Pre-Roll buttons */
+main.bg-black section button {
+  background: #080808 !important;
+  border: 2px solid #D4AF37 !important;
+  color: #FFD700 !important;
+}
+
+/* Keep the Back button gold */
+main.bg-black section > button:last-child {
+  background: #D4AF37 !important;
+  color: #000000 !important;
+}
