@@ -1,9 +1,9 @@
 
 "use client";
 
+import { useEffect, useState } from "react";
 import ShootingStar from "../ShootingStar";
 import GoldParticles from "../GoldParticles";
-import { useEffect, useState } from "react";
 
 const GOLD = "#D4AF37";
 
@@ -22,6 +22,17 @@ const preRollCategories = [
   "Single Pre-Rolls",
 ];
 
+const preRollOptions: Record<string, string[]> = {
+  "Infused Pre-Rolls": [
+    "Classic Infused Pre-Rolls",
+    "Mini Infused Pre-Rolls",
+  ],
+  "Single Pre-Rolls": [
+    "Classic Singles",
+    "Mini Singles",
+  ],
+};
+
 const flowerPrices = {
   Originals: [
     ["3.5g", "$20"],
@@ -39,12 +50,13 @@ const flowerPrices = {
 
 type FlowerType = keyof typeof flowerPrices;
 
-export default function Home() {
+export default function CollectionPage() {
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [ageChecked, setAgeChecked] = useState(false);
   const [selected, setSelected] = useState("");
   const [flowerType, setFlowerType] = useState<FlowerType | null>(null);
   const [preRollType, setPreRollType] = useState("");
+  const [preRollOption, setPreRollOption] = useState("");
 
   useEffect(() => {
     setAgeConfirmed(
@@ -61,7 +73,7 @@ export default function Home() {
         <ShootingStar />
 
         <div
-          className="age-gate-panel w-full max-w-md rounded-2xl border p-8"
+          className="age-gate-panel w-full max-w-md rounded-2xl border bg-black p-8"
           style={{ borderColor: GOLD }}
         >
           <h1
@@ -117,10 +129,7 @@ export default function Home() {
   }
 
   return (
-    <main
-      id="home"
-      className="min-h-screen bg-black px-5 py-12 text-white"
-    >
+    <main className="min-h-screen bg-black px-5 py-12 text-white">
       <GoldParticles />
 
       <details className="fixed right-4 top-4 z-50">
@@ -186,21 +195,19 @@ export default function Home() {
                 setSelected(category);
                 setFlowerType(null);
                 setPreRollType("");
+                setPreRollOption("");
               }}
-              className="gold-shine-box rounded-xl border-2 p-6 transition hover:brightness-110"
+              className="gold-shine-box rounded-xl border-2 bg-black p-6 transition hover:brightness-110"
               style={{
-                backgroundColor: "#000000",
                 borderColor: GOLD,
                 color: GOLD,
               }}
             >
               <h2
-                className="relative z-10 block text-2xl font-black tracking-wide"
+                className="relative z-10 text-xl font-black tracking-wide sm:text-2xl"
                 style={{
                   color: "#FFD700",
                   WebkitTextFillColor: "#FFD700",
-                  opacity: 1,
-                  visibility: "visible",
                 }}
               >
                 {category}
@@ -215,7 +222,7 @@ export default function Home() {
 
         {selected && (
           <section
-            className="mt-10 rounded-xl border p-8"
+            className="mt-10 rounded-xl border bg-black p-5 sm:p-8"
             style={{ borderColor: GOLD }}
           >
             <h2
@@ -225,25 +232,28 @@ export default function Home() {
               {selected}
             </h2>
 
-            {/* New Pre-Rolls subcategories */}
+            {/* Pre-Roll categories */}
             {selected === "Pre-Rolls" && (
-              <div className="mt-6">
-                <p className="mb-6 text-sm text-gray-300">
-                  EXPLORE PRE-ROLL CATEGORIES
+              <div className="mt-7">
+                <p className="mb-6 text-xs font-bold tracking-widest text-gray-300">
+                  SELECT A PRE-ROLL CATEGORY
                 </p>
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                   {preRollCategories.map((name) => (
                     <button
                       key={name}
-                      onClick={() => setPreRollType(name)}
+                      onClick={() => {
+                        setPreRollType(name);
+                        setPreRollOption("");
+                      }}
                       className="rounded-xl border-2 p-6 transition hover:brightness-125"
                       style={{
+                        borderColor: GOLD,
                         backgroundColor:
                           preRollType === name
                             ? "#17130A"
                             : "#000000",
-                        borderColor: GOLD,
                         color: GOLD,
                       }}
                     >
@@ -258,44 +268,102 @@ export default function Home() {
                   ))}
                 </div>
 
+                {/* Subcategories */}
                 {preRollType && (
                   <div
-                    className="mt-7 rounded-xl border p-8"
-                    style={{
-                      borderColor: GOLD,
-                      backgroundColor: "#0B0B0B",
-                    }}
+                    className="mt-7 rounded-xl border bg-[#0B0B0B] p-5 sm:p-8"
+                    style={{ borderColor: GOLD }}
                   >
                     <p className="text-xs font-bold tracking-widest text-gray-400">
-                      815 FLAVORZ
+                      PRE-ROLL COLLECTION
                     </p>
 
                     <h3
-                      className="mt-4 text-2xl font-black"
+                      className="mt-3 text-2xl font-black"
                       style={{ color: GOLD }}
                     >
                       {preRollType}
                     </h3>
 
-                    <div
-                      className="mx-auto my-6 h-px w-24"
-                      style={{ backgroundColor: GOLD }}
-                    />
+                    {preRollOptions[preRollType] ? (
+                      <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        {preRollOptions[preRollType].map((option) => (
+                          <button
+                            key={option}
+                            onClick={() => setPreRollOption(option)}
+                            className="rounded-xl border-2 bg-black p-6 transition hover:brightness-125"
+                            style={{
+                              borderColor: GOLD,
+                              color: GOLD,
+                            }}
+                          >
+                            <h4 className="text-lg font-black">
+                              {option}
+                            </h4>
 
-                    <p
-                      className="text-xl font-black tracking-widest"
-                      style={{ color: GOLD }}
-                    >
-                      COMING SOON
-                    </p>
+                            <p className="mt-3 text-xs font-bold tracking-widest text-white">
+                              VIEW DETAILS
+                            </p>
+                          </button>
+                        ))}
+                      </div>
+                    ) : (
+                      <p
+                        className="mt-7 text-xl font-black tracking-widest"
+                        style={{ color: GOLD }}
+                      >
+                        COMING SOON
+                      </p>
+                    )}
 
-                    <p className="mt-4 text-sm text-gray-300">
-                      Stay tuned for future collection updates.
-                    </p>
+                    {preRollOption && (
+                      <div className="mt-7 rounded-xl border border-[#D4AF37]/50 bg-black p-7">
+                        <p className="text-xs font-bold tracking-widest text-gray-400">
+                          815 FLAVORZ
+                        </p>
+
+                        <h4
+                          className="mt-4 text-xl font-black"
+                          style={{ color: GOLD }}
+                        >
+                          {preRollOption}
+                        </h4>
+
+                        <div
+                          className="mx-auto my-6 h-px w-24"
+                          style={{ backgroundColor: GOLD }}
+                        />
+
+                        <p
+                          className="text-xl font-black tracking-widest"
+                          style={{ color: GOLD }}
+                        >
+                          COMING SOON
+                        </p>
+
+                        <p className="mt-4 text-sm text-gray-300">
+                          Stay tuned for collection updates.
+                        </p>
+
+                        <button
+                          onClick={() => setPreRollOption("")}
+                          className="mt-7 rounded-lg border px-5 py-3 text-sm font-bold"
+                          style={{
+                            borderColor: GOLD,
+                            color: GOLD,
+                          }}
+                        >
+                          BACK TO OPTIONS
+                        </button>
+                      </div>
+                    )}
 
                     <button
-                      onClick={() => setPreRollType("")}
-                      className="mt-7 rounded-lg border px-5 py-3 text-sm font-bold"
+                      onClick={() => {
+                        setPreRollType("");
+                        setPreRollOption("");
+                      }}
+                      className="mt-8 rounded-lg border px-5 py-3 text-sm font-bold"
                       style={{
                         borderColor: GOLD,
                         color: GOLD,
@@ -308,7 +376,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* Flower categories and prices */}
+            {/* Flower */}
             {selected === "Flower" && (
               <div className="mt-6">
                 <div className="grid grid-cols-2 gap-4">
@@ -317,9 +385,8 @@ export default function Home() {
                       <button
                         key={name}
                         onClick={() => setFlowerType(name)}
-                        className="rounded-xl border-2 p-5"
+                        className="rounded-xl border-2 bg-black p-5"
                         style={{
-                          backgroundColor: "#000000",
                           borderColor: GOLD,
                           color: GOLD,
                         }}
@@ -373,7 +440,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* Moonrocks and Snowcaps prices */}
+            {/* Moonrocks and Snowcaps */}
             {["Snowcaps", "Moonrocks"].includes(selected) && (
               <div className="mx-auto mt-6 max-w-md space-y-3">
                 {(selected === "Snowcaps"
@@ -408,7 +475,6 @@ export default function Home() {
               </div>
             )}
 
-            {/* Other categories */}
             {["Disposables", "Edibles"].includes(selected) && (
               <p className="mt-6 text-white">
                 COMING SOON
@@ -420,14 +486,15 @@ export default function Home() {
                 setSelected("");
                 setFlowerType(null);
                 setPreRollType("");
+                setPreRollOption("");
               }}
-              className="mt-8 rounded-lg px-5 py-2 font-bold"
+              className="mt-8 rounded-lg px-5 py-3 font-bold"
               style={{
                 backgroundColor: GOLD,
                 color: "#000000",
               }}
             >
-              BACK
+              BACK TO COLLECTIONS
             </button>
           </section>
         )}
