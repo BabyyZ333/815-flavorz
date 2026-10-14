@@ -253,7 +253,10 @@ export default function CollectionPage() {
   key={category}
   type="button"
   onClick={() => {
-                setSelected(category);
+                window.location.assign(
+              "/collection/" +
+              category.toLowerCase().replaceAll(" ", "-")
+            );
             window.scrollTo({ top: 0, behavior: "smooth" });
                 setFlowerType(null);
                 setPreRollType("");
