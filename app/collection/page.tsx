@@ -258,9 +258,9 @@ export default function CollectionPage() {
               }}
   className="group relative flex w-full min-h-[112px] items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 hover:brightness-110 active:scale-[0.98] sm:min-h-[125px] sm:px-6"
   style={{
-    borderColor: "#F1DEAD",
+    borderColor: "#D4AF37",
     background:
-      "linear-gradient(115deg, #F1DEB0 0%, #D4B477 48%, #AE8849 100%)",
+      "linear-gradient(115deg, #101010 0%, #2B2416 50%, #0B0B0B 100%)",
     boxShadow:
       "0 8px 24px rgba(0,0,0,0.48), inset 0 1px 2px rgba(255,255,255,0.45)",
   }}
@@ -268,7 +268,7 @@ export default function CollectionPage() {
   <span
     className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl"
     style={{
-      background: "rgba(255,245,220,0.35)",
+      background: "rgba(212,175,55,0.14)",
       border: "1px solid rgba(85,58,20,0.18)",
     }}
   >
@@ -278,7 +278,7 @@ export default function CollectionPage() {
   height="30"
   viewBox="0 0 24 24"
   fill="none"
-  stroke="#111111"
+  stroke="#E7C46B"
   strokeWidth="1.8"
   strokeLinecap="round"
   strokeLinejoin="round"
@@ -336,8 +336,8 @@ export default function CollectionPage() {
     <span
       className="text-lg font-black tracking-wide sm:text-2xl"
       style={{
-        color: "#090909",
-        WebkitTextFillColor: "#090909",
+        color: "#FFE19B",
+        WebkitTextFillColor: "#FFE19B",
         fontWeight: 900,
         textShadow: "1px 2px 3px rgba(255,255,255,0.35)",
       }}
@@ -348,8 +348,8 @@ export default function CollectionPage() {
     <span
       className="rounded-full px-3 py-1 text-[10px] font-black tracking-wider sm:text-xs"
       style={{
-        background: "#111111",
-        color: "#F1DEB0",
+        background: "#D4AF37",
+        color: "#090909",
       }}
     >
       COMING SOON
@@ -358,7 +358,7 @@ export default function CollectionPage() {
 
   <span
     className="relative z-10 text-3xl font-bold"
-    style={{ color: "#17120B" }}
+    style={{ color: "#D4AF37" }}
     aria-hidden="true"
   >
     ›
@@ -540,13 +540,13 @@ export default function CollectionPage() {
                       <button
                         key={name}
                         onClick={() => setFlowerType(name)}
-                        className="rounded-xl border-2 bg-[#0c0d10]/95 p-5"
+                        className="rounded-xl border-2 bg-[#17140F] p-5"
                         style={{
                           borderColor: GOLD,
-                          color: GOLD,
+                          color: "#FFF0BD",
                         }}
                       >
-                        <h3 className="text-xl font-black">
+                        <h3 className="text-xl font-black drop-shadow-md">
                           {name}
                         </h3>
 
