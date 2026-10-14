@@ -11,7 +11,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-5 text-center text-white flavor-purple-home">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-5 text-center text-white">
       <ShootingStar />
       <GoldParticles />
 
