@@ -492,3 +492,166 @@ main.bg-black section > button:last-child {
 }
 
 /* ===== END LUXURY COLLECTION V2 ===== */
+
+
+/* 815 PURPLE GOLD THEME START */
+
+:root {
+  --flavor-purple-dark: #0C0617;
+  --flavor-purple: #291543;
+  --flavor-purple-light: #4D286B;
+  --flavor-gold: #D4AF37;
+  --flavor-gold-light: #FFE4A0;
+}
+
+body {
+  background-color: #0C0617 !important;
+  color: #FFF1CF;
+}
+
+/* Purple tint behind collection marble */
+main[class*="bg-[#08090b]"] {
+  background-color: #0C0617 !important;
+}
+
+/* Main collection cards */
+.flavor-maincard {
+  background: linear-gradient(
+    115deg,
+    #160D2A 0%,
+    #392052 48%,
+    #10091D 100%
+  ) !important;
+
+  border: 1px solid #D4AF37 !important;
+  box-shadow:
+    0 0 17px rgba(130, 65, 199, 0.24),
+    0 8px 25px rgba(0,0,0,0.65) !important;
+}
+
+.flavor-maincard:hover,
+.flavor-maincard:focus-visible {
+  border-color: #FFE4A0 !important;
+  box-shadow:
+    0 0 25px rgba(176, 104, 239, 0.4),
+    0 0 10px rgba(212,175,55,0.2) !important;
+}
+
+.flavor-maincard > span:first-of-type {
+  background: #392052 !important;
+  border-color: #7F559C !important;
+}
+
+.flavor-maincard svg {
+  stroke: #F1D178 !important;
+}
+
+.flavor-maincard .font-black {
+  color: #FFE7A5 !important;
+  -webkit-text-fill-color: #FFE7A5 !important;
+  text-shadow: 0 2px 5px #000 !important;
+}
+
+.flavor-maincard .rounded-full {
+  background: #D4AF37 !important;
+  color: #100819 !important;
+  -webkit-text-fill-color: #100819 !important;
+  text-shadow: none !important;
+}
+
+.flavor-maincard > span:last-of-type {
+  color: #D4AF37 !important;
+}
+
+/* Flower and Pre-Rolls selections */
+.flavor-subcard {
+  background: linear-gradient(
+    135deg,
+    #291543,
+    #130A23 85%
+  ) !important;
+  border-color: #D4AF37 !important;
+  color: #FFE7A5 !important;
+  -webkit-text-fill-color: #FFE7A5 !important;
+}
+
+.flavor-subcard h2,
+.flavor-subcard h3,
+.flavor-subcard h4 {
+  color: #FFE7A5 !important;
+  -webkit-text-fill-color: #FFE7A5 !important;
+}
+
+.flavor-subcard p {
+  color: #D7B6FF !important;
+  -webkit-text-fill-color: #D7B6FF !important;
+}
+
+/* Hamburger menu */
+.flavor-menu > summary,
+.flavor-menu nav {
+  background: #190D2B !important;
+  border-color: #D4AF37 !important;
+}
+
+.flavor-menu nav a {
+  color: #FFE7A5 !important;
+}
+
+.flavor-menu nav a:hover {
+  background: #392052 !important;
+}
+
+/* Purple panels on homepage, About, FAQ, Contact */
+main section {
+  background-image: linear-gradient(
+    120deg,
+    #1B102E,
+    #110A20 55%,
+    #2D1945
+  ) !important;
+  border-color: #B99542 !important;
+}
+
+main section h2,
+main section h3 {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.75);
+}
+
+main section details {
+  background-color: #1B102E !important;
+  border-color: #8764A9 !important;
+}
+
+main section details summary {
+  color: #FFE7A5 !important;
+}
+
+/* Purple accents on dark collection detail panels */
+main div[class*="bg-[#0b0c10]"],
+main div[class*="bg-[#090a0d]"] {
+  background-color: #160D26 !important;
+}
+
+/* Keep interactive gold buttons readable */
+main a[class*="bg-[#D4AF37]"],
+main button[class*="bg-[#D4AF37]"] {
+  color: #09050F !important;
+}
+
+/* Additional glow and motion */
+.flavor-maincard,
+.flavor-subcard {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flavor-maincard,
+  .flavor-subcard {
+    transition: none !important;
+  }
+}
+
+/* 815 PURPLE GOLD THEME END */
