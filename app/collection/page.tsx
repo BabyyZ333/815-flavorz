@@ -274,9 +274,17 @@ export default function CollectionPage() {
   {category}
 </h2>
 
-              <p className="relative z-10 mt-3 text-xs font-bold tracking-widest">
-                COMING SOON
-              </p>
+              <p
+  className="relative z-10 mt-3 text-sm font-black tracking-widest"
+  style={{
+    color: "#000000",
+    WebkitTextFillColor: "#000000",
+    fontWeight: 900,
+    textShadow: "1px 1px 2px rgba(255,255,255,0.5)",
+  }}
+>
+  COMING SOON
+</p>
             </button>
           ))}
         </div>
