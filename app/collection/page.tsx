@@ -191,7 +191,7 @@ export default function CollectionPage() {
           aria-label="Open menu"
           className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
           style={{
-            color: GOLD,
+            color: "#000000",
             borderColor: GOLD,
             backgroundColor: "#0B0B0B",
           }}
@@ -226,7 +226,7 @@ export default function CollectionPage() {
         <h1
           className="text-5xl font-black tracking-widest"
           style={{
-            color: GOLD,
+            color: "#000000",
             textShadow:
               "0 0 10px #FFD700, 0 0 25px rgba(255,215,0,0.7)",
           }}
@@ -247,7 +247,7 @@ export default function CollectionPage() {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {categories.map((category) => (
             <button
-              key={category}
+              key=<span style={{ color: "#000000", fontWeight: 900, textShadow: "2px 2px 2px rgba(255,255,255,0.75), 4px 4px 5px rgba(0,0,0,0.85)" }}>{category}</span>
               onClick={() => {
                 setSelected(category);
                 setFlowerType(null);
@@ -270,7 +270,7 @@ export default function CollectionPage() {
                   WebkitTextFillColor: "#FFD700",
                 }}
               >
-                {category}
+                <span style={{ color: "#000000", fontWeight: 900, textShadow: "2px 2px 2px rgba(255,255,255,0.75), 4px 4px 5px rgba(0,0,0,0.85)" }}>{category}</span>
               </h2>
 
               <p className="relative z-10 mt-3 text-xs font-bold tracking-widest">
