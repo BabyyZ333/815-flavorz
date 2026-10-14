@@ -191,7 +191,7 @@ export default function CollectionPage() {
           aria-label="Open menu"
           className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
           style={{
-            color: "#000000",
+            color: GOLD,
             borderColor: GOLD,
             backgroundColor: "#0B0B0B",
           }}
@@ -226,7 +226,7 @@ export default function CollectionPage() {
         <h1
           className="text-5xl font-black tracking-widest"
           style={{
-            color: "#000000",
+            color: GOLD,
             textShadow:
               "0 0 10px #FFD700, 0 0 25px rgba(255,215,0,0.7)",
           }}
@@ -247,7 +247,7 @@ export default function CollectionPage() {
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
           {categories.map((category) => (
             <button
-              key=<span style={{ color: "#000000", fontWeight: 900, textShadow: "2px 2px 2px rgba(255,255,255,0.75), 4px 4px 5px rgba(0,0,0,0.85)" }}>{category}</span>
+              key={category}
               onClick={() => {
                 setSelected(category);
                 setFlowerType(null);
@@ -257,10 +257,7 @@ export default function CollectionPage() {
               className="rounded-xl border-2 bg-[#0b0c10]/90 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:brightness-125"
               style={{
                 borderColor: GOLD,
-                color: "#000000",
-        fontWeight: 900,
-        WebkitTextStroke: "0.5px #D4AF37",
-        textShadow: "2px 2px 3px #D4AF37, 4px 4px 6px rgba(0,0,0,0.95)",
+                color: GOLD,
               }}
             >
               <h2
@@ -270,7 +267,7 @@ export default function CollectionPage() {
                   WebkitTextFillColor: "#FFD700",
                 }}
               >
-                <span style={{ color: "#000000", fontWeight: 900, textShadow: "2px 2px 2px rgba(255,255,255,0.75), 4px 4px 5px rgba(0,0,0,0.85)" }}>{category}</span>
+                {category}
               </h2>
 
               <p className="relative z-10 mt-3 text-xs font-bold tracking-widest">
