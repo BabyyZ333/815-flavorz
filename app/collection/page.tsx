@@ -244,7 +244,9 @@ export default function CollectionPage() {
         />
 
         {/* Main categories */}
-        <div className="grid grid-cols-1 gap-4 sm:gap-5">
+        {/* 815 FULL SCREEN CATEGORY VIEWS */}
+{!selected && (
+<div className="grid grid-cols-1 gap-4 sm:gap-5">
           {categories.map((category) => (
             
 <button
@@ -252,6 +254,7 @@ export default function CollectionPage() {
   type="button"
   onClick={() => {
                 setSelected(category);
+            window.scrollTo({ top: 0, behavior: "smooth" });
                 setFlowerType(null);
                 setPreRollType("");
                 setPreRollOption("");
@@ -367,12 +370,33 @@ export default function CollectionPage() {
 
           ))}
         </div>
+)}
 
         {selected && (
           <section
             className="mt-10 rounded-xl border bg-[#0b0c10]/95 p-5 shadow-2xl backdrop-blur-md sm:p-8"
             style={{ borderColor: GOLD }}
           >
+{/* Back to categories */}
+<button
+  type="button"
+  onClick={() => {
+    setSelected("");
+    setFlowerType(null);
+    setPreRollType("");
+    setPreRollOption("");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }}
+  className="mb-6 flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-black transition hover:brightness-125"
+  style={{
+    borderColor: "#D4AF37",
+    background: "#17140F",
+    color: "#FFE5A0",
+  }}
+>
+  ← BACK TO COLLECTIONS
+</button>
+
             <h2
               className="text-2xl font-black"
               style={{ color: GOLD }}
