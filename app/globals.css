@@ -655,3 +655,90 @@ main button[class*="bg-[#D4AF37]"] {
 }
 
 /* 815 PURPLE GOLD THEME END */
+
+
+/* ===== 815 PURPLE LUXURY HOMEPAGE ===== */
+
+.flavor-purple-home {
+  background-color: #0D0718 !important;
+  background-image:
+    radial-gradient(
+      ellipse at 20% 18%,
+      rgba(112,55,169,0.2),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 83% 65%,
+      rgba(76,37,129,0.25),
+      transparent 48%
+    ),
+    repeating-linear-gradient(
+      125deg,
+      transparent 0px,
+      transparent 110px,
+      rgba(212,175,55,0.045) 113px,
+      transparent 116px
+    ),
+    linear-gradient(
+      145deg,
+      #08050E,
+      #1C0F30,
+      #09050F
+    ) !important;
+}
+
+.flavor-purple-home section {
+  background: linear-gradient(
+    135deg,
+    #1A0D2E 0%,
+    #291440 50%,
+    #13091F 100%
+  ) !important;
+  border: 1px solid #D4AF37 !important;
+  box-shadow:
+    0 0 18px rgba(121,61,186,0.2),
+    0 10px 28px rgba(0,0,0,0.5) !important;
+}
+
+.flavor-purple-home section h2,
+.flavor-purple-home section h3 {
+  color: #F8D988 !important;
+  -webkit-text-fill-color: #F8D988 !important;
+  text-shadow:
+    0 2px 7px rgba(0,0,0,0.85) !important;
+}
+
+.flavor-purple-home section p {
+  line-height: 1.8;
+}
+
+.flavor-purple-home section a {
+  box-shadow:
+    0 0 16px rgba(212,175,55,0.25);
+}
+
+.flavor-purple-home section a:hover {
+  filter: brightness(1.12);
+}
+
+.flavor-purple-home section details {
+  background: #170C29 !important;
+  border: 1px solid #8054A8 !important;
+}
+
+.flavor-purple-home section details[open] {
+  border-color: #D4AF37 !important;
+  box-shadow:
+    0 0 12px rgba(212,175,55,0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flavor-purple-home *,
+  .flavor-purple-home *::before,
+  .flavor-purple-home *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===== END PURPLE LUXURY HOMEPAGE ===== */

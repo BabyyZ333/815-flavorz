@@ -11,7 +11,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-5 text-center text-white">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-black px-5 text-center text-white flavor-purple-home">
       <ShootingStar />
       <GoldParticles />
 
@@ -59,13 +59,7 @@ export default function Home() {
           The Flavor Speaks for Itself.
         </p>
 
-        <a
-          href="/collection"
-          className="mt-10 rounded-xl px-8 py-4 text-sm font-black tracking-widest transition hover:brightness-125"
-          style={{ backgroundColor: GOLD, color: "#000000" }}
-        >
-          VIEW COLLECTION →
-        </a>
+        
       </div>
 
       
