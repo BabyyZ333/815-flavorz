@@ -244,48 +244,127 @@ export default function CollectionPage() {
         />
 
         {/* Main categories */}
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5">
           {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => {
+            
+<button
+  key={category}
+  type="button"
+  onClick={() => {
                 setSelected(category);
                 setFlowerType(null);
                 setPreRollType("");
                 setPreRollOption("");
               }}
-              className="rounded-xl border-2 bg-[#0b0c10]/90 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:brightness-125"
-              style={{
-                borderColor: GOLD,
-                color: GOLD,
-              }}
-            >
-              <h2
-  className="relative z-10 text-xl font-black tracking-wide sm:text-2xl"
+  className="group relative flex w-full min-h-[112px] items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 hover:brightness-110 active:scale-[0.98] sm:min-h-[125px] sm:px-6"
   style={{
-    color: "#000000",
-    WebkitTextFillColor: "#000000",
-    fontWeight: 900,
-    WebkitTextStroke: "0.5px #D4AF37",
-    textShadow:
-      "1px 1px 0 #FFD700, 2px 2px 3px #FFD700, 4px 4px 6px rgba(0,0,0,0.95)",
+    borderColor: "#F1DEAD",
+    background:
+      "linear-gradient(115deg, #F1DEB0 0%, #D4B477 48%, #AE8849 100%)",
+    boxShadow:
+      "0 8px 24px rgba(0,0,0,0.48), inset 0 1px 2px rgba(255,255,255,0.45)",
   }}
 >
-  {category}
-</h2>
+  <span
+    className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl"
+    style={{
+      background: "rgba(255,245,220,0.35)",
+      border: "1px solid rgba(85,58,20,0.18)",
+    }}
+  >
+    
+<svg
+  width="30"
+  height="30"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="#111111"
+  strokeWidth="1.8"
+  strokeLinecap="round"
+  strokeLinejoin="round"
+  aria-hidden="true"
+>
+  {category === "Pre-Rolls" && (
+    <>
+      <path d="M3 15h13l4-4-3-3-4 4H3z" />
+      <path d="M8 15v-3" />
+      <path d="M18 4c2 1 2 3 1 4" />
+    </>
+  )}
+  {category === "Flower" && (
+    <>
+      <circle cx="12" cy="12" r="2" />
+      <path d="M12 10C7 3 3 9 10 12" />
+      <path d="M14 12c7-3 3-9-2-2" />
+      <path d="M12 14c-3 7 5 8 2 0" />
+      <path d="M10 12c-7 3-3 9 2 2" />
+      <path d="M12 3v4M12 17v4" />
+    </>
+  )}
+  {category === "Disposables" && (
+    <>
+      <rect x="8" y="3" width="8" height="18" rx="3" />
+      <path d="M10 6h4" />
+      <circle cx="12" cy="17" r="1" />
+    </>
+  )}
+  {category === "Edibles" && (
+    <>
+      <path d="M19 8a3 3 0 0 1-3-3 4 4 0 0 0-5-1C4 4 2 10 4 16s9 7 14 3c3-3 4-8 1-11z" />
+      <circle cx="9" cy="9" r="1" />
+      <circle cx="15" cy="13" r="1" />
+      <circle cx="10" cy="17" r="1" />
+    </>
+  )}
+  {category === "Moonrocks" && (
+    <>
+      <path d="M7 3h10l5 7-10 11L2 10z" />
+      <path d="M2 10h20M7 3l5 18 5-18" />
+    </>
+  )}
+  {category === "Snowcaps" && (
+    <>
+      <path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19" />
+      <path d="m9 5 3 3 3-3M9 19l3-3 3 3" />
+    </>
+  )}
+</svg>
 
-              <p
-  className="relative z-10 mt-3 text-sm font-black tracking-widest"
-  style={{
-    color: "#000000",
-    WebkitTextFillColor: "#000000",
-    fontWeight: 900,
-    textShadow: "1px 1px 2px rgba(255,255,255,0.5)",
-  }}
->
-  COMING SOON
-</p>
-            </button>
+  </span>
+
+  <span className="relative z-10 flex min-w-0 flex-1 flex-col items-start gap-2">
+    <span
+      className="text-lg font-black tracking-wide sm:text-2xl"
+      style={{
+        color: "#090909",
+        WebkitTextFillColor: "#090909",
+        fontWeight: 900,
+        textShadow: "1px 2px 3px rgba(255,255,255,0.35)",
+      }}
+    >
+      {category}
+    </span>
+
+    <span
+      className="rounded-full px-3 py-1 text-[10px] font-black tracking-wider sm:text-xs"
+      style={{
+        background: "#111111",
+        color: "#F1DEB0",
+      }}
+    >
+      COMING SOON
+    </span>
+  </span>
+
+  <span
+    className="relative z-10 text-3xl font-bold"
+    style={{ color: "#17120B" }}
+    aria-hidden="true"
+  >
+    ›
+  </span>
+</button>
+
           ))}
         </div>
 
