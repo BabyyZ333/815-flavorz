@@ -261,14 +261,18 @@ export default function CollectionPage() {
               }}
             >
               <h2
-                className="relative z-10 text-xl font-black tracking-wide sm:text-2xl"
-                style={{
-                  color: "#FFD700",
-                  WebkitTextFillColor: "#FFD700",
-                }}
-              >
-                {category}
-              </h2>
+  className="relative z-10 text-xl font-black tracking-wide sm:text-2xl"
+  style={{
+    color: "#000000",
+    WebkitTextFillColor: "#000000",
+    fontWeight: 900,
+    WebkitTextStroke: "0.5px #D4AF37",
+    textShadow:
+      "1px 1px 0 #FFD700, 2px 2px 3px #FFD700, 4px 4px 6px rgba(0,0,0,0.95)",
+  }}
+>
+  {category}
+</h2>
 
               <p className="relative z-10 mt-3 text-xs font-bold tracking-widest">
                 COMING SOON
