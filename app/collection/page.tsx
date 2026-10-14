@@ -186,7 +186,7 @@ export default function CollectionPage() {
       <MarbleBackground />
       <GoldParticles />
 
-      <details className="fixed right-4 top-4 z-50">
+      <details className="fixed right-4 top-4 z-50 flavor-menu">
         <summary
           aria-label="Open menu"
           className="cursor-pointer list-none rounded-lg border px-4 py-2 text-2xl font-bold shadow-lg"
@@ -256,7 +256,7 @@ export default function CollectionPage() {
                 setPreRollType("");
                 setPreRollOption("");
               }}
-  className="group relative flex w-full min-h-[112px] items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 hover:brightness-110 active:scale-[0.98] sm:min-h-[125px] sm:px-6"
+  className="group relative flex w-full min-h-[112px] items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 hover:brightness-110 active:scale-[0.98] sm:min-h-[125px] sm:px-6 flavor-maincard"
   style={{
     borderColor: "#D4AF37",
     background:
@@ -395,7 +395,7 @@ export default function CollectionPage() {
                         setPreRollType(name);
                         setPreRollOption("");
                       }}
-                      className="rounded-xl border-2 p-6 transition hover:brightness-125"
+                      className="rounded-xl border-2 p-6 transition hover:brightness-125 flavor-subcard"
                       style={{
                         borderColor: GOLD,
                         backgroundColor:
@@ -439,7 +439,7 @@ export default function CollectionPage() {
                           <button
                             key={option}
                             onClick={() => setPreRollOption(option)}
-                            className="rounded-xl border-2 bg-[#0c0d10]/95 p-6 transition hover:brightness-125"
+                            className="rounded-xl border-2 bg-[#0c0d10]/95 p-6 transition hover:brightness-125 flavor-subcard"
                             style={{
                               borderColor: GOLD,
                               color: GOLD,
@@ -502,7 +502,7 @@ export default function CollectionPage() {
 
                         <button
                           onClick={() => setPreRollOption("")}
-                          className="mt-7 rounded-lg border px-5 py-3 text-sm font-bold"
+                          className="mt-7 rounded-lg border px-5 py-3 text-sm font-bold flavor-subcard"
                           style={{
                             borderColor: GOLD,
                             color: GOLD,
@@ -518,7 +518,7 @@ export default function CollectionPage() {
                         setPreRollType("");
                         setPreRollOption("");
                       }}
-                      className="mt-8 rounded-lg border px-5 py-3 text-sm font-bold"
+                      className="mt-8 rounded-lg border px-5 py-3 text-sm font-bold flavor-subcard"
                       style={{
                         borderColor: GOLD,
                         color: GOLD,
@@ -540,7 +540,7 @@ export default function CollectionPage() {
                       <button
                         key={name}
                         onClick={() => setFlowerType(name)}
-                        className="rounded-xl border-2 bg-[#17140F] p-5"
+                        className="rounded-xl border-2 bg-[#17140F] p-5 flavor-subcard"
                         style={{
                           borderColor: GOLD,
                           color: "#FFF0BD",
@@ -643,7 +643,7 @@ export default function CollectionPage() {
                 setPreRollType("");
                 setPreRollOption("");
               }}
-              className="mt-8 rounded-lg px-5 py-3 font-bold"
+              className="mt-8 rounded-lg px-5 py-3 font-bold flavor-subcard"
               style={{
                 backgroundColor: GOLD,
                 color: "#000000",
