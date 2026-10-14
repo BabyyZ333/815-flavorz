@@ -57,6 +57,51 @@ const flowerPrices = {
 
 type FlowerType = keyof typeof flowerPrices;
 
+
+function MarbleBackground() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 bg-[#08090b]" />
+      <svg
+        className="absolute inset-0 h-full w-full opacity-70"
+        viewBox="0 0 900 1500"
+        preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <filter id="marble-noise" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.012 0.027" numOctaves="5" seed="7" result="noise" />
+            <feColorMatrix in="noise" type="saturate" values="0" result="gray" />
+            <feComponentTransfer in="gray" result="contrast">
+              <feFuncR type="gamma" amplitude="0.36" exponent="3" offset="0" />
+              <feFuncG type="gamma" amplitude="0.38" exponent="3" offset="0" />
+              <feFuncB type="gamma" amplitude="0.42" exponent="3" offset="0" />
+            </feComponentTransfer>
+          </filter>
+          <linearGradient id="marble-gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#6b4c1d" stopOpacity="0" />
+            <stop offset="40%" stopColor="#b38b45" stopOpacity="0.45" />
+            <stop offset="75%" stopColor="#f3d48a" stopOpacity="0.65" />
+            <stop offset="100%" stopColor="#6b4c1d" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        <rect width="900" height="1500" filter="url(#marble-noise)" opacity="0.75" />
+        <g fill="none" stroke="#77777b" strokeOpacity="0.17" strokeWidth="3">
+          <path d="M-100 300 C130 190 120 480 350 360 S600 210 1000 90" />
+          <path d="M-80 900 C180 690 320 1050 520 780 S790 710 1010 510" />
+          <path d="M-100 1370 C200 1160 330 1450 590 1190 S780 1020 1010 930" />
+        </g>
+        <g fill="none" stroke="url(#marble-gold)" strokeWidth="1.8">
+          <path d="M-90 340 C140 230 130 510 370 390 S620 250 1010 120" />
+          <path d="M-90 950 C170 730 310 1090 540 820 S790 760 1010 560" />
+          <path d="M-100 1410 C190 1190 350 1490 600 1230 S800 1070 1010 970" />
+        </g>
+      </svg>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/65 to-black/80" />
+    </div>
+  );
+}
+
 export default function CollectionPage() {
   const [ageConfirmed, setAgeConfirmed] = useState(false);
   const [ageChecked, setAgeChecked] = useState(false);
@@ -76,11 +121,12 @@ export default function CollectionPage() {
 
   if (!ageConfirmed) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-black p-6 text-center text-white">
+      <main className="relative isolate flex min-h-screen items-center justify-center overflow-hidden bg-[#08090b] p-6 text-center text-white">
+        <MarbleBackground />
         <ShootingStar />
 
         <div
-          className="age-gate-panel w-full max-w-md rounded-2xl border bg-black p-8"
+          className="age-gate-panel relative z-10 w-full max-w-md rounded-2xl border bg-[#0b0c10]/95 p-8"
           style={{ borderColor: GOLD }}
         >
           <h1
@@ -136,7 +182,8 @@ export default function CollectionPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black px-5 py-12 text-white">
+    <main className="relative isolate min-h-screen overflow-hidden bg-[#08090b] px-5 py-12 text-white">
+      <MarbleBackground />
       <GoldParticles />
 
       <details className="fixed right-4 top-4 z-50">
@@ -169,10 +216,13 @@ export default function CollectionPage() {
           <a href="/faq" className="rounded px-4 py-3 hover:bg-white/10">
             FAQ
           </a>
+          <a href="/contact" className="rounded px-4 py-3 hover:bg-white/10">
+            Contact Us
+          </a>
         </nav>
       </details>
 
-      <div className="mx-auto max-w-5xl text-center">
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
         <h1
           className="text-5xl font-black tracking-widest"
           style={{
@@ -204,7 +254,7 @@ export default function CollectionPage() {
                 setPreRollType("");
                 setPreRollOption("");
               }}
-              className="gold-shine-box rounded-xl border-2 bg-black p-6 transition hover:brightness-110"
+              className="rounded-xl border-2 bg-[#0b0c10]/90 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:brightness-125"
               style={{
                 borderColor: GOLD,
                 color: GOLD,
@@ -229,7 +279,7 @@ export default function CollectionPage() {
 
         {selected && (
           <section
-            className="mt-10 rounded-xl border bg-black p-5 sm:p-8"
+            className="mt-10 rounded-xl border bg-[#0b0c10]/95 p-5 shadow-2xl backdrop-blur-md sm:p-8"
             style={{ borderColor: GOLD }}
           >
             <h2
@@ -260,7 +310,7 @@ export default function CollectionPage() {
                         backgroundColor:
                           preRollType === name
                             ? "#17130A"
-                            : "#000000",
+                            : "#0c0d10",
                         color: GOLD,
                       }}
                     >
@@ -278,7 +328,7 @@ export default function CollectionPage() {
                 {/* Subcategories */}
                 {preRollType && (
                   <div
-                    className="mt-7 rounded-xl border bg-[#0B0B0B] p-5 sm:p-8"
+                    className="mt-7 rounded-xl border bg-[#0b0c10]/95 p-5 sm:p-8"
                     style={{ borderColor: GOLD }}
                   >
                     <p className="text-xs font-bold tracking-widest text-gray-400">
@@ -298,7 +348,7 @@ export default function CollectionPage() {
                           <button
                             key={option}
                             onClick={() => setPreRollOption(option)}
-                            className="rounded-xl border-2 bg-black p-6 transition hover:brightness-125"
+                            className="rounded-xl border-2 bg-[#0c0d10]/95 p-6 transition hover:brightness-125"
                             style={{
                               borderColor: GOLD,
                               color: GOLD,
@@ -324,7 +374,7 @@ export default function CollectionPage() {
                     )}
 
                     {preRollOption && (
-                      <div className="mt-7 rounded-xl border border-[#D4AF37]/50 bg-black p-7">
+                      <div className="mt-7 rounded-xl border border-[#D4AF37]/50 bg-[#090a0d]/95 p-7">
                         <p className="text-xs font-bold tracking-widest text-gray-400">
                           815 FLAVORZ
                         </p>
@@ -399,7 +449,7 @@ export default function CollectionPage() {
                       <button
                         key={name}
                         onClick={() => setFlowerType(name)}
-                        className="rounded-xl border-2 bg-black p-5"
+                        className="rounded-xl border-2 bg-[#0c0d10]/95 p-5"
                         style={{
                           borderColor: GOLD,
                           color: GOLD,
