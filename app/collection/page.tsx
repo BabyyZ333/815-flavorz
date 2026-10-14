@@ -257,7 +257,10 @@ export default function CollectionPage() {
               className="rounded-xl border-2 bg-[#0b0c10]/90 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.55)] backdrop-blur-sm transition hover:brightness-125"
               style={{
                 borderColor: GOLD,
-                color: GOLD,
+                color: "#000000",
+        fontWeight: 900,
+        WebkitTextStroke: "0.5px #D4AF37",
+        textShadow: "2px 2px 3px #D4AF37, 4px 4px 6px rgba(0,0,0,0.95)",
               }}
             >
               <h2
