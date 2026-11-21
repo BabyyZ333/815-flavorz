@@ -1,0 +1,144 @@
+
+const GOLD = "#D4AF37";
+
+export default function ContactPage() {
+  return (
+    <main className="min-h-screen bg-black px-5 py-12 pb-32 text-white">
+      <div className="mx-auto max-w-3xl">
+
+        <nav className="mb-14 flex flex-wrap justify-center gap-6 text-xs font-bold tracking-widest"
+          style={{ color: GOLD }}>
+          <a href="/" className="hover:underline">HOME</a>
+          <a href="/collection" className="hover:underline">COLLECTION</a>
+          <a href="/about" className="hover:underline">ABOUT US</a>
+          <a href="/faq" className="hover:underline">FAQ</a>
+          <a href="/contact" className="hover:underline">CONTACT</a>
+        </nav>
+
+        <header className="mb-12 text-center">
+          <p className="text-xs font-bold tracking-[0.3em]" style={{ color: GOLD }}>
+            815 FLAVORZ
+          </p>
+
+          <h1 className="mt-5 text-4xl font-black tracking-wider sm:text-6xl"
+            style={{ color: GOLD }}>
+            CONTACT US
+          </h1>
+
+          <p className="mt-6 text-sm leading-7 text-gray-300">
+            Stay connected with 815 FLAVORZ as we continue
+            building something bigger.
+          </p>
+
+          <div className="mx-auto mt-8 h-px w-40"
+            style={{ backgroundColor: GOLD }} />
+        </header>
+
+        <section className="mb-8 rounded-3xl border border-[#D4AF37] bg-[#0B0B0B] px-6 py-10 text-center shadow-xl sm:px-10">
+          <p className="text-xs font-black tracking-[0.3em] text-[#D4AF37]">
+            OFFICIAL MESSAGE
+          </p>
+
+          <h2 className="mt-5 text-2xl font-black tracking-wider text-[#FFD700]">
+            A MESSAGE FROM BABYZ
+          </h2>
+
+          <div className="mx-auto my-7 h-px w-32 bg-[#D4AF37]" />
+
+          <p className="mx-auto max-w-xl text-sm leading-8 text-gray-200 sm:text-base">
+            815 FLAVORZ is currently in its testing phase.
+            This is just a preview of what&apos;s to come as
+            we continue building something bigger.
+          </p>
+
+          <p className="mt-8 text-sm font-bold tracking-wide text-[#D4AF37]">
+            — BabyZ | Founder of 815 FLAVORZ
+          </p>
+        </section>
+
+        <section className="rounded-3xl border bg-[#0B0B0B] p-7 text-center sm:p-10"
+          style={{ borderColor: GOLD }}>
+          <p className="text-xs font-bold tracking-widest text-gray-400">
+            GET IN TOUCH
+          </p>
+
+          <h2 className="mt-5 text-2xl font-black" style={{ color: GOLD }}>
+            SOMETHING BIG IS COMING.
+          </h2>
+
+          <p className="mt-5 text-sm leading-8 text-gray-300">
+            Our official contact channels are currently
+            being prepared. We&apos;re working behind the scenes
+            to make connecting with 815 FLAVORZ simple
+            and convenient.
+          </p>
+
+          <div className="mt-8 rounded-xl border border-[#D4AF37]/40 p-6">
+            <p className="text-lg font-black tracking-widest"
+              style={{ color: GOLD }}>
+              COMING SOON
+            </p>
+            <p className="mt-3 text-xs text-gray-400">
+              Official contact information will be announced here.
+            </p>
+          </div>
+        </section>
+
+        <div className="mt-7 grid gap-5 sm:grid-cols-2">
+          <section className="rounded-2xl border bg-[#0B0B0B] p-7 text-center"
+            style={{ borderColor: GOLD }}>
+            <h2 className="text-lg font-black" style={{ color: GOLD }}>
+              BUSINESS INQUIRIES
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-gray-300">
+              Professional inquiries and brand-related
+              communication.
+            </p>
+            <p className="mt-5 text-xs font-bold tracking-widest"
+              style={{ color: GOLD }}>
+              COMING SOON
+            </p>
+          </section>
+
+          <section className="rounded-2xl border bg-[#0B0B0B] p-7 text-center"
+            style={{ borderColor: GOLD }}>
+            <h2 className="text-lg font-black" style={{ color: GOLD }}>
+              SOCIAL MEDIA
+            </h2>
+            <p className="mt-4 text-sm leading-7 text-gray-300">
+              Follow our journey and stay connected
+              with future announcements.
+            </p>
+            <p className="mt-5 text-xs font-bold tracking-widest"
+              style={{ color: GOLD }}>
+              COMING SOON
+            </p>
+          </section>
+        </div>
+
+        <section className="mt-8 rounded-3xl border border-[#D4AF37]/40 p-8 text-center">
+          <p className="text-xs font-bold tracking-widest" style={{ color: GOLD }}>
+            THE JOURNEY CONTINUES
+          </p>
+          <h2 className="mt-5 text-2xl font-black text-white">
+            BUILT FROM THE GROUND UP.
+          </h2>
+          <p className="mt-5 text-sm leading-7 text-gray-300">
+            We're just getting started. Thank you for being
+            part of the 815 FLAVORZ story.
+          </p>
+          <a href="/about"
+            className="mt-7 inline-block rounded-xl border px-7 py-3 text-sm font-black"
+            style={{ borderColor: GOLD, color: GOLD }}>
+            READ OUR STORY →
+          </a>
+        </section>
+
+        <footer className="mt-14 text-center text-xs tracking-widest"
+          style={{ color: GOLD }}>
+          © 2026 815 FLAVORZ. ALL RIGHTS RESERVED.
+        </footer>
+      </div>
+    </main>
+  );
+}

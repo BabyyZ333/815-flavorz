@@ -55,7 +55,7 @@ export default function LoginPage() {
           padding: "35px 25px",
           textAlign: "center",
           background: "rgba(0, 0, 0, 0.72)",
-          border: "2px solid #D4AF37",
+          border: "2px solid #3B82F6",
           borderRadius: "20px",
         }}
       >
@@ -93,7 +93,7 @@ export default function LoginPage() {
             padding: 14,
             border: "none",
             borderRadius: 10,
-            background: "#D4AF37",
+            background: "#3B82F6",
             color: "white",
             fontSize: 18,
             fontWeight: "bold",

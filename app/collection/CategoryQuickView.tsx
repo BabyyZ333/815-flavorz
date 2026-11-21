@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const GOLD = "#D4AF37";
+const GOLD = "#3B82F6";
 
 const flower = [
   {
@@ -124,8 +124,8 @@ export default function CategoryQuickView({
   if (!verified) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#08090b] p-6 text-center text-white">
-        <div className="w-full max-w-sm rounded-2xl border border-[#D4AF37] bg-[#111111] p-7">
-          <h1 className="text-3xl font-black text-[#D4AF37]">
+        <div className="w-full max-w-sm rounded-2xl border border-[#3B82F6] bg-[#111111] p-7">
+          <h1 className="text-3xl font-black text-[#3B82F6]">
             815 FLAVORZ
           </h1>
           <h2 className="mt-5 text-xl font-bold">
@@ -142,7 +142,7 @@ export default function CategoryQuickView({
               );
               setVerified(true);
             }}
-            className="mt-6 w-full rounded-xl bg-[#D4AF37] p-4 font-black text-black"
+            className="mt-6 w-full rounded-xl bg-[#3B82F6] p-4 font-black text-black"
           >
             I AM 21 OR OLDER
           </button>
@@ -150,7 +150,7 @@ export default function CategoryQuickView({
             onClick={() => {
               window.location.href = "https://www.google.com";
             }}
-            className="mt-3 w-full rounded-xl border border-[#D4AF37] p-4 font-bold"
+            className="mt-3 w-full rounded-xl border border-[#3B82F6] p-4 font-bold"
           >
             I AM UNDER 21
           </button>
@@ -176,7 +176,7 @@ export default function CategoryQuickView({
         <header className="mb-6">
           <Link
             href="/collection"
-            className="inline-flex items-center gap-2 rounded-xl border border-[#D4AF37] bg-[#19160F] px-4 py-3 text-xs font-black tracking-wide text-[#FFE5A0]"
+            className="inline-flex items-center gap-2 rounded-xl border border-[#3B82F6] bg-[#19160F] px-4 py-3 text-xs font-black tracking-wide text-[#FFE5A0]"
           >
             ← ALL COLLECTIONS
           </Link>
@@ -191,7 +191,7 @@ export default function CategoryQuickView({
             <h1 className="mt-2 text-3xl font-black tracking-wide text-[#FFE5A0]">
               {category.toUpperCase()}
             </h1>
-            <div className="mx-auto mt-4 h-px w-28 bg-[#D4AF37]" />
+            <div className="mx-auto mt-4 h-px w-28 bg-[#3B82F6]" />
           </div>
         </header>
 
@@ -229,7 +229,7 @@ export default function CategoryQuickView({
                 <h2 className="font-black text-[#FFE5A0]">
                   Pre-Roll Packs
                 </h2>
-                <p className="mt-2 text-xs font-bold tracking-widest text-[#D4AF37]">
+                <p className="mt-2 text-xs font-bold tracking-widest text-[#3B82F6]">
                   COMING SOON
                 </p>
               </div>
@@ -254,7 +254,7 @@ export default function CategoryQuickView({
           category === "Edibles") && (
           <GoldCard>
             <div className="py-12 text-center">
-              <div className="text-4xl text-[#D4AF37]">
+              <div className="text-4xl text-[#3B82F6]">
                 {icons[category]}
               </div>
               <h2 className="mt-5 text-xl font-black text-[#FFE5A0]">
@@ -273,7 +273,7 @@ export default function CategoryQuickView({
           </span>
         </div>
 
-        <footer className="mt-10 text-center text-xs tracking-widest text-[#B89B58]">
+        <footer className="mt-10 text-center text-xs tracking-widest text-[#3B82F6]">
           815 FLAVORZ © 2026
         </footer>
       </div>

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import ShootingStar from "../ShootingStar";
 import GoldParticles from "../GoldParticles";
 
-const GOLD = "#D4AF37";
+const GOLD = "#3B82F6";
 
 const categories = [
   "Pre-Rolls",
@@ -228,7 +228,7 @@ export default function CollectionPage() {
           style={{
             color: GOLD,
             textShadow:
-              "0 0 10px #FFD700, 0 0 25px rgba(255,215,0,0.7)",
+              "0 0 10px #60A5FA, 0 0 25px rgba(96,165,250,0.7)",
           }}
         >
           815 FLAVORZ
@@ -264,7 +264,7 @@ export default function CollectionPage() {
               }}
   className="group relative flex w-full min-h-[112px] items-center gap-4 overflow-hidden rounded-2xl border px-4 py-4 text-left transition-all duration-300 hover:brightness-110 active:scale-[0.98] sm:min-h-[125px] sm:px-6 flavor-maincard"
   style={{
-    borderColor: "#D4AF37",
+    borderColor: "#3B82F6",
     background:
       "linear-gradient(115deg, #101010 0%, #2B2416 50%, #0B0B0B 100%)",
     boxShadow:
@@ -274,7 +274,7 @@ export default function CollectionPage() {
   <span
     className="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl"
     style={{
-      background: "rgba(212,175,55,0.14)",
+      background: "rgba(59,130,246,0.14)",
       border: "1px solid rgba(85,58,20,0.18)",
     }}
   >
@@ -354,7 +354,7 @@ export default function CollectionPage() {
     <span
       className="rounded-full px-3 py-1 text-[10px] font-black tracking-wider sm:text-xs"
       style={{
-        background: "#D4AF37",
+        background: "#3B82F6",
         color: "#090909",
       }}
     >
@@ -364,7 +364,7 @@ export default function CollectionPage() {
 
   <span
     className="relative z-10 text-3xl font-bold"
-    style={{ color: "#D4AF37" }}
+    style={{ color: "#3B82F6" }}
     aria-hidden="true"
   >
     ›
@@ -392,7 +392,7 @@ export default function CollectionPage() {
   }}
   className="mb-6 flex items-center gap-2 rounded-xl border px-5 py-3 text-sm font-black transition hover:brightness-125"
   style={{
-    borderColor: "#D4AF37",
+    borderColor: "#3B82F6",
     background: "#17140F",
     color: "#FFE5A0",
   }}
@@ -492,7 +492,7 @@ export default function CollectionPage() {
                     )}
 
                     {preRollOption && (
-                      <div className="mt-7 rounded-xl border border-[#D4AF37]/50 bg-[#090a0d]/95 p-7">
+                      <div className="mt-7 rounded-xl border border-[#3B82F6]/50 bg-[#090a0d]/95 p-7">
                         <p className="text-xs font-bold tracking-widest text-gray-400">
                           815 FLAVORZ
                         </p>

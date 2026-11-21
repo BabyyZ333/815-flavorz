@@ -27,7 +27,7 @@ export default function BottomNav() {
           zIndex: 999,
           display: "flex",
           background: "#101015",
-          borderTop: "1px solid #D4AF3755",
+          borderTop: "1px solid #3B82F655",
           padding: "12px 8px",
           paddingBottom: "calc(12px + env(safe-area-inset-bottom))",
         }}
@@ -43,7 +43,7 @@ export default function BottomNav() {
               alignItems: "center",
               gap: 4,
               textDecoration: "none",
-              color: pathname === item.href ? "#D4AF37" : "#FFFFFF",
+              color: pathname === item.href ? "#3B82F6" : "#FFFFFF",
               fontSize: 12,
             }}
           >

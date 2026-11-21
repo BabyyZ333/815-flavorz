@@ -1,5 +1,5 @@
 
-const GOLD = "#D4AF37";
+const GOLD = "#3B82F6";
 
 export default function ContactPage() {
   return (
@@ -51,7 +51,7 @@ export default function ContactPage() {
             and convenient.
           </p>
 
-          <div className="mt-8 rounded-xl border border-[#D4AF37]/40 p-6">
+          <div className="mt-8 rounded-xl border border-[#3B82F6]/40 p-6">
             <p className="text-lg font-black tracking-widest"
               style={{ color: GOLD }}>
               COMING SOON
@@ -94,7 +94,7 @@ export default function ContactPage() {
           </section>
         </div>
 
-        <section className="mt-8 rounded-3xl border border-[#D4AF37]/40 p-8 text-center">
+        <section className="mt-8 rounded-3xl border border-[#3B82F6]/40 p-8 text-center">
           <p className="text-xs font-bold tracking-widest" style={{ color: GOLD }}>
             THE JOURNEY CONTINUES
           </p>

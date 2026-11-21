@@ -50,7 +50,7 @@ export default function GoldParticles() {
         ctx.beginPath();
         ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`;
         ctx.shadowBlur = 8;
-        ctx.shadowColor = "#D4AF37";
+        ctx.shadowColor = "#3B82F6";
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
 
